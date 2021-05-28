@@ -140,7 +140,6 @@ public class NodePositionList<E> implements PositionList<E> {
 	public String toString() { return toString(this); }
 
 	public static void interface_Lista_Nodos() {
-
 		NodePositionList<Integer> Nodo = new NodePositionList<Integer>();
 
 		boolean exit = false;

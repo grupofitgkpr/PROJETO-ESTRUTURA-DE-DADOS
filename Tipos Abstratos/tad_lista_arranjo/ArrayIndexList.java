@@ -94,57 +94,57 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						   + "Digite a opção: ");
 			int opc = input.nextInt();
 			switch(opc) {
-			case 0:
-				exit = true;
-				break;
-
-			case 1:
-				System.out.print("\nDigite o indice onde deseja inserir: ");
-
-				Integer indice = null;
-				Integer valor = null;
-
-				try {
-					indice = input.nextInt();
-					System.out.print("\nDigite o valor que será armazenado no indice: ");
-					valor = input.nextInt();
-				} catch (InputMismatchException e) {
-					System.out.println("	****Valor inválido****");
-					input.nextLine();
+				case 0:
+					exit = true;
 					break;
-				} catch (IndexOutOfBoundsException e) {
-					System.out.println("	****Indice fora do limite do arranjo****");
-					input.nextLine();
+	
+				case 1:
+					Integer indice = null;
+					Integer valor = null;
+	
+					try {
+						System.out.print("\nDigite o indice onde deseja inserir: ");
+						indice = input.nextInt();
+						
+						System.out.print("Digite o valor que será armazenado no indice: ");
+						valor = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("	****Valor inválido****");
+						input.nextLine();
+						break;
+					} 
+					
+					try{ Arranjo.add(indice, valor); }
+					catch (IndexOutOfBoundsException e) {
+						System.out.println("****Indice fora do limite do arranjo****");
+						input.nextLine();
+						break;
+					}
+					System.out.println("\nValor adicionado: "+ Arranjo.get(indice));
 					break;
-				}
-
-				Arranjo.add(indice, valor);
-				System.out.println("\nValor adicionado: "+ Arranjo.get(indice));
-				break;
+					
+				case 2:
+					System.out.print("\nDigite o índice que deseja remover: ");
+					Integer indiceRemover = null;
+	
+					try {
+						indiceRemover = input.nextInt();
+						System.out.println("\nO indice " + indiceRemover + " de valor " + Arranjo.get(indiceRemover) + " foi removido.");
+						Arranjo.remove(indiceRemover);
+					} catch (IndexOutOfBoundsException e) {
+						System.out.println("****Indice fora do limite do arranjo****");
+						input.nextLine();
+						break;
+					}
+					break;
+	
+				case 3:
+					System.out.print("\nLista Arranjo Atual: ");
+					System.out.println(Arranjo.toString());
+					break;
 				
-			case 2:
-				System.out.println("\nDigite o índice onde deseja remover: ");
-				Integer indiceRemover = null;
-
-				try {
-					indiceRemover = input.nextInt();
-					System.out.println("\n O valor " + Arranjo.get(indiceRemover) + " foi removido.");
-					Arranjo.remove(indiceRemover);
-				} catch (IndexOutOfBoundsException e) {
-					System.out.println("	****Indice fora do limite do arranjo****");
-					input.nextLine();
-					break;
-				}
-				break;
-
-			case 3:
-				System.out.print("\nLista Arranjo Atual: ");
-				System.out.print(Arranjo.toString() + "\n");
-
-				break;
-			
-			default:
-				System.out.println("Opção inválida");
+				default:
+					System.out.println("Opção inválida");
 			}
 		}
 	}

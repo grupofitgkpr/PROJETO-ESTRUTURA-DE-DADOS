@@ -1,7 +1,5 @@
 package tad_fila;
 
-import tad_lista_arranjo.ArrayIndexList;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -68,7 +66,6 @@ public class NodeQueue<E> implements Queue<E> {
     }
 
     public static void interface_Fila() {
-
         NodeQueue<Integer> Fila = new NodeQueue<Integer>();
 
         boolean exit = false;
@@ -80,7 +77,6 @@ public class NodeQueue<E> implements Queue<E> {
                     + "[1] Adicionar\n"
                     + "[2] Remover\n"
                     + "[3] Visualizar\n"
-                    + "[4] Tamanho\n"
                     + "Digite a opção: ");
             int opc = input.nextInt();
             switch (opc) {
@@ -90,7 +86,6 @@ public class NodeQueue<E> implements Queue<E> {
 
                 case 1:
                     System.out.print("\nDigite o elemento a ser inserido na fila: ");
-
                     Integer elemento = null;
 
                     try {
@@ -126,21 +121,10 @@ public class NodeQueue<E> implements Queue<E> {
                         break;
                     }
                     break;
-
-                case 4:
-                    try {
-                        System.out.println("O tamanho da fila é " + Fila.size());
-                    } catch (EmptyQueueException e) {
-                        System.out.println("	****A fila esta vazia****");
-                        input.nextLine();
-                        break;
-                    }
-                    break;
+                
                 default:
                     System.out.println("Opção inválida");
             }
         }
-
     }
-
 }
