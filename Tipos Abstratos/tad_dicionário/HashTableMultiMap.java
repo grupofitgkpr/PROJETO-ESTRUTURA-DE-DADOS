@@ -67,14 +67,17 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					Integer rkey = null;
 					try {
 						rkey = input.nextInt();
+						String rvalor = Dicionario.remove(Dicionario.get(rkey)).toString();
+						System.out.println("\nChave removida: " + rvalor);
 					} catch (InputMismatchException e) {
-						System.out.println("	****Valor inválido****");
+						System.out.println("	**** Valor inválido ****");
+						input.nextLine();
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println("	**** A chave '" + rkey + "' não existe no Dicionário ****");
 						input.nextLine();
 						break;
 					}
-					
-					String rvalor = Dicionario.remove(Dicionario.get(rkey)).toString();
-					System.out.println("\nChave removida: " + rvalor);
 					break;
 				
 				case 3:
