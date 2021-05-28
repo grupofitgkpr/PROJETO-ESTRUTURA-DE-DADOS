@@ -1,4 +1,5 @@
 # PROJETO-ESTRUTURA-DE-DADOS
+Projeto final da disciplina de Estrutura de Dados do Professor Takai
 
 # Integrantes:
 
