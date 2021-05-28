@@ -60,23 +60,6 @@ public class LinkedTree<E> implements Tree<E> {
 			return s;
 	}
 	
-	// EXERCICIO 3-C
-	
-	// Professor, essa daqui não está faltando esse "DiscNode" estar em algum arquivo?
-	
-	/*public int diskSpace(LinkedTree<DiscNode> T, TreePosition<DiscNode> v) {
-		int s = v.element().getKbytes(); // inicia com o tamanho do próprio nodo
-		for (Position<DiscNode> w : v.getChildren()) {
-			// acrescenta o espaço ocupado pelos filhos de v calculado recursivamente
-			s += diskSpace(T, (TreePosition<DiscNode>) w);
-		}
-		if (T.isInternal(v)) {
-			// imprime o nome e o espaço ocupado em disco
-			System.out.println(v.getElement().getName() + ": " + s);
-		}
-		return s;
-	}*/
-	
 	// EXERCICIO 3-D
 	public int depth(LinkedTree<E> t, Position<E> v) {
 		if (v == root)

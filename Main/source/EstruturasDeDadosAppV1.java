@@ -40,11 +40,12 @@ public class EstruturasDeDadosAppV1 {
             switch (opc){
                 case 0:
                     System.out.println("----- Fim do Programa -----");
+                    input.close();
                     System.exit(-1);
                     break;
                 case 1:
                 	System.out.println("**Texto Explicativo**");
-                	//ArrayIndexList.interface_Lista_Arranjo();
+                	ArrayIndexList.interface_Lista_Arranjo();
                     break;
                 case 2:
                 	System.out.println("**Texto Explicativo**");
