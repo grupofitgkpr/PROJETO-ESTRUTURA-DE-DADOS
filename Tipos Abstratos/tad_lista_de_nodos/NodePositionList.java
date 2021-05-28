@@ -1,8 +1,12 @@
 package tad_lista_de_nodos;
+import java.util.InputMismatchException;
 import java.util.Iterator;
+import java.util.Scanner;
+
 import exceptions.*;
 import interfaces.Position;
 import interfaces.PositionList;
+import tad_fila.Queue;
 
 public class NodePositionList<E> implements PositionList<E> {
 	protected int numElts; // Número de elementos na lista
@@ -16,8 +20,8 @@ public class NodePositionList<E> implements PositionList<E> {
 		trailer = new DNode<E>(header, null, null); // cria a cauda
 		header.setNext(trailer); // faz a cabeça e a cauda apontarem uma para a outra
 	}
-	
-	// Verifica se a posição é válida para esta lista e a converte para DNode se for válida
+
+    // Verifica se a posição é válida para esta lista e a converte para DNode se for válida
 	protected DNode<E> checkPosition(Position<E> p) throws InvalidPositionException {
 		if (p == null) throw new InvalidPositionException("Null position passed to NodeList");
 		if (p == header) throw new InvalidPositionException("The header node is not a valid position");
@@ -134,5 +138,56 @@ public class NodePositionList<E> implements PositionList<E> {
 	// Retorna o iterator a partir do ElemenIterator.
 	public Iterator<E> iterator() { return new ElementIterator<E>(this); }
 	public String toString() { return toString(this); }
+
+	public static void interface_Lista_Nodos() {
+
+		NodePositionList<Integer> Nodo = new NodePositionList<Integer>();
+
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Visualizar primeiro nodo\n"
+					+ "[2] Visualizar ultimo nodo\n"
+					+ "[3] Visualizar um nodo depois de um certo nodo\n"
+					+ "[4] Visualizar um nodo antes de um certo nodo\n"
+					+ "[5] Adiciona um nodo no inicio da lista\n"
+					+ "[6] Adiciona um nodo no fim da lista\n"
+					+ "[7] Adiciona nodo depois de um certo nodo\n"
+					+ "[8] Adiciona nodo antes de um certo nodo\n"
+					+ "[9] Remover um certo nodo\n"
+					+ "[????????] Substituir um certo nodo\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch (opc) {
+				case 0:
+					exit = true;
+					break;
+
+				case 1:
+					try {
+						System.out.println("O primeiro elemento da lista é " + Nodo.first());
+					} catch (EmptyListException e) {
+						System.out.println("	****Lista vazia****");
+						input.nextLine();
+						break;
+					}
+
+				case 2:
+					try {
+						System.out.println("O ultimo elemento da lista é " + Nodo.first());
+					} catch (EmptyListException e) {
+						System.out.println("	****Lista vazia****");
+						input.nextLine();
+						break;
+					}
+
+				default:
+					System.out.println("Opção inválida");
+			}
+		}
+	}
 }
 

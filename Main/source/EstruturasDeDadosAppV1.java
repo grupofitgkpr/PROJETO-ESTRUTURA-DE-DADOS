@@ -49,11 +49,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 2:
                 	System.out.println("**Texto Explicativo**");
-                	//ArrayStack.interface_Pilha();
+                	ArrayStack.interface_Pilha();
                     break;
                 case 3:
                 	System.out.println("**Texto Explicativo**");
-                	//NodeQueue.interface_Fila();
+                	NodeQueue.interface_Fila();
                     break;
                 case 4:
                 	System.out.println("**Texto Explicativo**");

@@ -100,21 +100,47 @@ public class ArrayIndexList<E> implements IndexList<E> {
 
 			case 1:
 				System.out.print("\nDigite o indice onde deseja inserir: ");
-				int indice = input.nextInt();
-				
-				System.out.print("\nDigite o valor que será armazenado no indice: ");
-				int valor = input.nextInt();
-				
+
+				Integer indice = null;
+				Integer valor = null;
+
+				try {
+					indice = input.nextInt();
+					System.out.print("\nDigite o valor que será armazenado no indice: ");
+					valor = input.nextInt();
+				} catch (InputMismatchException e) {
+					System.out.println("	****Valor inválido****");
+					input.nextLine();
+					break;
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("	****Indice fora do limite do arranjo****");
+					input.nextLine();
+					break;
+				}
+
 				Arranjo.add(indice, valor);
 				System.out.println("\nValor adicionado: "+ Arranjo.get(indice));
 				break;
 				
 			case 2:
-				
-			
+				System.out.println("\nDigite o índice onde deseja remover: ");
+				Integer indiceRemover = null;
+
+				try {
+					indiceRemover = input.nextInt();
+					System.out.println("\n O valor " + Arranjo.get(indiceRemover) + " foi removido.");
+					Arranjo.remove(indiceRemover);
+				} catch (IndexOutOfBoundsException e) {
+					System.out.println("	****Indice fora do limite do arranjo****");
+					input.nextLine();
+					break;
+				}
+				break;
+
 			case 3:
-				System.out.print("Lista Arranjo Atual: ");
-				System.out.print(Arranjo.toString());
+				System.out.print("\nLista Arranjo Atual: ");
+				System.out.print(Arranjo.toString() + "\n");
+
 				break;
 			
 			default:
