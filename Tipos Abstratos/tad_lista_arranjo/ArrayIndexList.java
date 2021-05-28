@@ -113,6 +113,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 				
 			
 			case 3:
+				System.out.print("Lista Arranjo Atual: ");
 				System.out.print(Arranjo.toString());
 				break;
 			
