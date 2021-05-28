@@ -69,7 +69,7 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 7:
                 	System.out.println("**Texto Explicativo**");
-                	//SortedListPriorityQueue.interface_Lista_Prioridades();
+                	SortedListPriorityQueue.interface_Lista_Prioridades();
                     break;
                 case 8:
                 	System.out.println("**Texto Explicativo**");
