@@ -53,7 +53,6 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 						break;
 					}
 						
-					
 					input.nextLine();
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();

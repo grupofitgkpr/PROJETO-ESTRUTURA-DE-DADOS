@@ -104,15 +104,17 @@ public class ArrayIndexList<E> implements IndexList<E> {
 				
 				System.out.print("\nDigite o valor que será armazenado no indice: ");
 				int valor = input.nextInt();
-				Arranjo.add(indice, valor);
 				
+				Arranjo.add(indice, valor);
 				System.out.println("\nValor adicionado: "+ Arranjo.get(indice));
-			
+				break;
+				
 			case 2:
 				
 			
 			case 3:
-				
+				System.out.print(Arranjo.toString());
+				break;
 			
 			default:
 				System.out.println("Opção inválida");
