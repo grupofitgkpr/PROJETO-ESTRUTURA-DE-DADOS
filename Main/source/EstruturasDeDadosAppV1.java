@@ -44,35 +44,35 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 1:
                 	System.out.println("**Texto Explicativo**");
-                	ArrayIndexList.interface_Lista_Arranjo();
+                	//ArrayIndexList.interface_Lista_Arranjo();
                     break;
                 case 2:
                 	System.out.println("**Texto Explicativo**");
-                	ArrayStack.interface_Pilha();
+                	//ArrayStack.interface_Pilha();
                     break;
                 case 3:
                 	System.out.println("**Texto Explicativo**");
-                	NodeQueue.interface_Fila();
+                	//NodeQueue.interface_Fila();
                     break;
                 case 4:
                 	System.out.println("**Texto Explicativo**");
-                	NodePositionList.interface_Lista_Nodos();
+                	//NodePositionList.interface_Lista_Nodos();
                     break;
                 case 5:
                 	System.out.println("**Texto Explicativo**");
-                    LinkedTree.interface_Arvore_Generica();
+                    //LinkedTree.interface_Arvore_Generica();
                     break;
                 case 6:
                 	System.out.println("**Texto Explicativo**");
-                	LinkedBinaryTree.interface_Arvore_Binaria();
+                	//LinkedBinaryTree.interface_Arvore_Binaria();
                     break;
                 case 7:
                 	System.out.println("**Texto Explicativo**");
-                	SortedListPriorityQueue.interface_Lista_Prioridades();
+                	//SortedListPriorityQueue.interface_Lista_Prioridades();
                     break;
                 case 8:
                 	System.out.println("**Texto Explicativo**");
-                	HashTableMap.interface_Mapa();
+                	//HashTableMap.interface_Mapa();
                     break;
                 case 9:
                 	System.out.println("**Texto Explicativo**");
@@ -80,11 +80,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 10:
                 	System.out.println("**Texto Explicativo**");
-                	BinarySearchTree.interface_Mapa_ABB();
+                	//BinarySearchTree.interface_Mapa_ABB();
                     break;
                 case 11:
                 	System.out.println("**Texto Explicativo**");
-                	AVLTreeMap.interface_Mapa_AVL();
+                	//AVLTreeMap.interface_Mapa_AVL();
                     break;
                 case 12:
                 	System.out.println("**Texto Explicativo**"

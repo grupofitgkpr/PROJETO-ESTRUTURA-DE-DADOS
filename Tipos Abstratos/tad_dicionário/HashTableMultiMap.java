@@ -5,6 +5,7 @@ package tad_dicionário;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
@@ -43,9 +44,17 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 	
 				case 1:
 					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
-					int key = input.nextInt();
+					Integer key = null;
+					try {
+						key = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("	****Valor inválido****");
+						input.nextLine();
+						break;
+					}
+						
 					
-					input.nextLine(); //Esse daqui só para consumir um erro que tava dando
+					input.nextLine();
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();
 					
@@ -55,7 +64,14 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 				
 				case 2:
 					System.out.print("Digite o valor da chave que será removida (Valor inteiro): ");
-					int rkey = input.nextInt();
+					Integer rkey = null;
+					try {
+						rkey = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("	****Valor inválido****");
+						input.nextLine();
+						break;
+					}
 					
 					String rvalor = Dicionario.remove(Dicionario.get(rkey)).toString();
 					System.out.println("\nChave removida: " + rvalor);
