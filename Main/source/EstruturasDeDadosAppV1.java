@@ -57,7 +57,7 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 4:
                 	System.out.println("**Texto Explicativo**");
-                	//NodePositionList.interface_Lista_Nodos();
+                	NodePositionList.interface_Lista_Nodos();
                     break;
                 case 5:
                 	System.out.println("**Texto Explicativo**");

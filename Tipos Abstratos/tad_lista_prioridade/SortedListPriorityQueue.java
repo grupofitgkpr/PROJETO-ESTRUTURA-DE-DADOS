@@ -146,8 +146,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar\n"
                     + "[2] Remover chave mínima\n"
-                    + "[3] Visualizar chave mínima\n"
-                    + "[4] Tamanho\n"
+                    + "[3] Visualizar\n"
                     + "Digite a opção: ");
             int opc = input.nextInt();
             switch (opc) {
@@ -167,7 +166,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     }
 
                     input.nextLine();
-                    System.out.print("\nDigite a String que será armazenada na chave: ");
+                    System.out.print("Digite a String que será armazenada na chave: ");
                     String value = input.nextLine();
 
                     String valorAdd = listaPrioritaria.insert(key, value).toString();
@@ -178,7 +177,6 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     try {
                         System.out.println("\nO valor " + listaPrioritaria.min() + " foi removido.");
                         listaPrioritaria.removeMin();
-
                     } catch (EmptyPriorityQueueException e) {
                         System.out.println("	****Lista prioritária vazia****");
                         input.nextLine();
@@ -187,23 +185,10 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     break;
 
                 case 3:
-                    try {
-                        System.out.println("\nA chave minima é "+ listaPrioritaria.min() +".");
-                    } catch (EmptyPriorityQueueException e) {
-                        System.out.println("    ****Lista prioritária vazia****");
-                        break;
-                    }
+                    System.out.print("\nLista de Prioridade atual: ");
+                    System.out.println(listaPrioritaria.toString());
                     break;
-
-                case 4:
-                    try {
-                        System.out.println("\nO tamanho da lista é "+ listaPrioritaria.size() +".");
-                    } catch (EmptyPriorityQueueException e) {
-                        System.out.println("    ****Lista prioritária vazia****");
-                        break;
-                    }
-                    break;
-
+                    
                 default:
                     System.out.println("Opção inválida");
             }

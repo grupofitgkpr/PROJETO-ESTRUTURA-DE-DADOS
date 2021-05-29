@@ -74,8 +74,8 @@ public class NodeQueue<E> implements Queue<E> {
         while (!exit) {
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-                    + "[1] Adicionar\n"
-                    + "[2] Remover\n"
+                    + "[1] Adicionar na fila\n"
+                    + "[2] Remover primeiro da fila\n"
                     + "[3] Visualizar\n"
                     + "Digite a opção: ");
             int opc = input.nextInt();
@@ -103,7 +103,7 @@ public class NodeQueue<E> implements Queue<E> {
                 case 2:
 
                     try {
-                        System.out.println("\n O valor " + Fila.front() + " foi removido.");
+                        System.out.println("\nO valor " + Fila.front() + " foi removido.");
                         Fila.dequeue();
                     } catch (EmptyQueueException e) {
                         System.out.println("	****A fila esta vazia****");
@@ -113,14 +113,9 @@ public class NodeQueue<E> implements Queue<E> {
                     break;
 
                 case 3:
-                    try {
-                        System.out.println("O primeiro elemento da fila é " + Fila.front());
-                    } catch (EmptyQueueException e) {
-                        System.out.println("	****A fila esta vazia****");
-                        input.nextLine();
-                        break;
-                    }
-                    break;
+                	 System.out.print("\nFila atual: ");
+                     System.out.println(Fila.toString());
+                     break;
                 
                 default:
                     System.out.println("Opção inválida");

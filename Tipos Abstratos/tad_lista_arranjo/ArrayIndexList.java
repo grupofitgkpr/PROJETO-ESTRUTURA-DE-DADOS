@@ -109,7 +109,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						System.out.print("Digite o valor que será armazenado no indice: ");
 						valor = input.nextInt();
 					} catch (InputMismatchException e) {
-						System.out.println("	****Valor inválido****");
+						System.out.println("****Indice ou valor de tipo inválido****");
 						input.nextLine();
 						break;
 					} 
@@ -129,8 +129,13 @@ public class ArrayIndexList<E> implements IndexList<E> {
 	
 					try {
 						indiceRemover = input.nextInt();
-						System.out.println("\nO indice " + indiceRemover + " de valor " + Arranjo.get(indiceRemover) + " foi removido.");
+						int elemento = Arranjo.get(indiceRemover);
 						Arranjo.remove(indiceRemover);
+						System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
+					} catch (InputMismatchException e) {
+						System.out.println("	****Valor de tipo inválido****");
+						input.nextLine();
+						break;
 					} catch (IndexOutOfBoundsException e) {
 						System.out.println("****Indice fora do limite do arranjo****");
 						input.nextLine();

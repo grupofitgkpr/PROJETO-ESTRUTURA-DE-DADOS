@@ -75,10 +75,9 @@ public class ArrayStack<E> implements Stack<E> {
         while (!exit) {
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-                    + "[1] Adicionar\n"
-                    + "[2] Remover\n"
-                    + "[3] Topo da pilha\n"
-                    + "[4] Tamanho\n"
+                    + "[1] Adicionar na pilha\n"
+                    + "[2] Remover topo da pilha\n"
+                    + "[3] Visualizar\n"
                     + "Digite a opção: ");
             int opc = input.nextInt();
             switch (opc) {
@@ -96,35 +95,25 @@ public class ArrayStack<E> implements Stack<E> {
                         input.nextLine();
                         break;
                     }
+                    
                     Pilha.push(valorAdicionar);
+                    System.out.println("Valor adicionado a pilha: " + valorAdicionar);
                     break;
 
                 case 2:
-                    System.out.println("\nO elemento " + Pilha.top() + " foi removido.");
+                	Integer elemento = null;
                     try {
-                        Pilha.pop();
+                        elemento = Pilha.pop();
                     } catch (EmptyStackException e) {
                         System.out.println("    ****Pilha vazia****");
                         break;
                     }
+                    System.out.println("\nO elemento " + elemento + " foi removido.");
                     break;
 
                 case 3:
-                    try {
-                        System.out.println("\nO elemento " + Pilha.top() + " esta no topo da lista.");
-                    } catch (EmptyStackException e) {
-                        System.out.println("    ****Pilha vazia****");
-                        break;
-                    }
-                    break;
-
-                case 4:
-                    try {
-                        System.out.println("\nO tamanho da lista é de  " + Pilha.size() + " elementos.");
-                    } catch (EmptyStackException e) {
-                        System.out.println("    ****Pilha vazia****");
-                        break;
-                    }
+                    System.out.print("\nPilha atual: ");
+                    System.out.println(Pilha.toString());
                     break;
 
                 default:
