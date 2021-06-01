@@ -2,15 +2,21 @@ package tad_mapa;
 
 import interfaces.Entry;
 import exceptions.InvalidKeyException;
+import tad_dicionário.HashTableMultiMap;
 import tad_lista_de_nodos.NodePositionList;
 import interfaces.PositionList;
 import interfaces.Map;
-// Uma tabela hash que usa o teste linear função hash MAD. Uma estrutura de dados da tabela hash que 
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+// Uma tabela hash que usa o teste linear função hash MAD. Uma estrutura de dados da tabela hash que
 // usa teste linear para lidar com colisões. A função hash usa o método hashCode integrado e o método 
 // multiply-add-and-divide. O fator de carga é sempre mantido menor ou igual a 0,5. Quando o fator de 
 // carga atinge 0,5, as entradas são refeitas em uma nova matriz de buckets com o dobro da capacidade.
 public class HashTableMap<K, V> implements Map<K, V> {
-	// Classe aninhada para uma entrada na table hash
+
+    // Classe aninhada para uma entrada na table hash
 	public static class HashEntry<K, V> implements Entry<K, V> {
 		protected K key;
 		protected V value;
@@ -156,5 +162,73 @@ public class HashTableMap<K, V> implements Map<K, V> {
 		for (int i = 0; i < capacity; i++)
 			if ((bucket[i] != null) && (bucket[i] != AVAILABLE)) values.addLast(bucket[i].getValue());
 		return values;
+	}
+
+	public static void interface_Mapa() {
+
+		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>();
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);;
+
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Remover\n"
+					+ "[3] Visualizar\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
+
+				case 1:
+					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
+					Integer key = null;
+					try {
+						key = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("	****Valor inválido****");
+						input.nextLine();
+						break;
+					}
+
+					input.nextLine();
+					System.out.print("Digite a String que será armazenada na chave: ");
+					String value = input.nextLine();
+
+					Mapa.put(key, value);
+					System.out.println("\nChave adicionada: " + key);
+					break;
+
+				case 2:
+					System.out.print("Digite o valor da chave que será removida (Valor inteiro): ");
+					Integer removeKey = null;
+					try {
+						removeKey = input.nextInt();
+						System.out.println("\nChave removida: " + removeKey);
+						Mapa.remove(removeKey);
+					} catch (InputMismatchException e) {
+						System.out.println("	**** Valor inválido ****");
+						input.nextLine();
+						break;
+					} catch (IllegalArgumentException e) {
+						System.out.println("	**** A chave '" + removeKey + "' não existe no Dicionário ****");
+						input.nextLine();
+						break;
+					}
+					break;
+
+				case 3:
+					System.out.print("Mapa atual: ");
+					System.out.println(Mapa.entrySet().toString());
+					break;
+
+				default:
+					System.out.println("Opção inválida");
+			}
+		}
+
 	}
 }

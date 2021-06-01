@@ -28,10 +28,10 @@ public class EstruturasDeDadosAppV1 {
             System.out.println("-------- Aplicação de Criação de Estruturas de Dados --------\n");
             Scanner input = new Scanner(System.in);
             System.out.println("[1] TAD Lista Arranjo		[2] TAD Pilha\n"
-                              +"[3] TAD Fila			[4] TAD Lista de Nodos\n"
+                              +"[3] TAD Fila			    [4] TAD Lista de Nodos\n"
                               +"[5] TAD Árvore Genética		[6] TAD Árvore Binária\n"
                               +"[7] TAD Fila de Prioridade	[8] TAD Mapa\n"
-                              +"[9] TAD Dicionário		[10] TAD Mapa Ordenado ABB\n"
+                              +"[9] TAD Dicionário		    [10] TAD Mapa Ordenado ABB\n"
                               +"[11] TAD Mapa Ordenado AVL	[12] TAD Grafos\n"
                               +"		[0] Encerrar programa\n");
             System.out.print("Qual estrutura de dados deseja utilizar?: ");
@@ -61,11 +61,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 5:
                 	System.out.println("**Texto Explicativo**");
-                    //LinkedTree.interface_Arvore_Generica();
+                    //LinkedTree.interface_Arvore_Generica();                 NÃO CONSEGUI PEDRO DESCULPA
                     break;
                 case 6:
                 	System.out.println("**Texto Explicativo**");
-                	//LinkedBinaryTree.interface_Arvore_Binaria();
+                	//LinkedBinaryTree.interface_Arvore_Binaria();            NÃO CONSEGUI PEDRO DESCULPA
                     break;
                 case 7:
                 	System.out.println("**Texto Explicativo**");
@@ -73,7 +73,7 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 8:
                 	System.out.println("**Texto Explicativo**");
-                	//HashTableMap.interface_Mapa();
+                	HashTableMap.interface_Mapa();
                     break;
                 case 9:
                 	System.out.println("**Texto Explicativo**");
@@ -81,11 +81,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 10:
                 	System.out.println("**Texto Explicativo**");
-                	//BinarySearchTree.interface_Mapa_ABB();
+                	//BinarySearchTree.interface_Mapa_ABB();                  NÃO CONSEGUI PEDRO DESCULPA
                     break;
                 case 11:
                 	System.out.println("**Texto Explicativo**");
-                	//AVLTreeMap.interface_Mapa_AVL();
+                	//AVLTreeMap.interface_Mapa_AVL();                        NÃO CONSEGUI PEDRO DESCULPA
                     break;
                 case 12:
                 	System.out.println("**Texto Explicativo**"

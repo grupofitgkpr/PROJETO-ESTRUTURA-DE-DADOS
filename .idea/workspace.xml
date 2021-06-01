@@ -4,7 +4,8 @@
     <list default="true" id="adcfe120-da65-422a-8960-a467ebb7d86f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main/source/EstruturasDeDadosAppV1.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main/source/EstruturasDeDadosAppV1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tipos Abstratos/tad_lista_prioridade/SortedListPriorityQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tipos Abstratos/tad_lista_prioridade/SortedListPriorityQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tipos Abstratos/tad_mapa/HashTableMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tipos Abstratos/tad_mapa/HashTableMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tipos Abstratos/tad_mapa_ordenado_ABB/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tipos Abstratos/tad_mapa_ordenado_ABB/BinarySearchTree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

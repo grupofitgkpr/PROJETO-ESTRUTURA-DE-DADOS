@@ -25,7 +25,8 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		C = comparator;
 		addRoot(null);
 	}
-	// Classe aninhada para as entradas conscientes de localização da árvore binária de pesquisa.
+
+    // Classe aninhada para as entradas conscientes de localização da árvore binária de pesquisa.
 	protected static class BSTEntry<K, V> implements Entry<K, V> {
 		protected K key;
 		protected V value;
@@ -214,4 +215,8 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		((BSTEntry<K, V>) c.element()).pos = c;
 		return b; // a nova raiz desta subárvore
 	}
+
+	public static void interface_Mapa_ABB() {
+	}
+
 }
