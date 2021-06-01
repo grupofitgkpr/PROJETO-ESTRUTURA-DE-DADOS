@@ -1,5 +1,6 @@
 package tad_arvore_binaria;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import exceptions.BoundaryViolationException;
 import exceptions.EmptyTreeException;
@@ -23,6 +24,118 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     public int size() {
         return size;
     }
+    
+    public static void interface_Arvore_Binaria() {
+		LinkedBinaryTree<String> ArvoreBinaria = new LinkedBinaryTree<String>();
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Remover\n"
+					+ "[3] Visualizar\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
+
+				case 1:
+					System.out.print("\nDigite a String que será guardada na árvore: ");
+					input.nextLine();
+					String key = input.nextLine();
+					
+					if (ArvoreBinaria.isEmpty()) {
+						ArvoreBinaria.addRoot(key);
+						System.out.println("\nRaiz adicionada: " + key);
+					} else {
+						System.out.print("\nA String precisa de um pai para ser adicionada, digite a String de um pai: ");
+						String paiElem = input.nextLine();
+						Position<String> paiPos = null;
+						
+						for (Position<String> w : ArvoreBinaria.positions()) {
+							if (paiElem.equals(w.element()))
+								paiPos = w;
+						}
+						
+						try {
+							ArvoreBinaria.checkPosition(paiPos);
+						} catch (InvalidPositionException e) {
+							System.out.println("****" + paiElem + " não existe na Árvore****");
+							break;
+						}
+						
+						if (ArvoreBinaria.hasRight(paiPos) && ArvoreBinaria.hasLeft(paiPos)) {
+							System.out.print("****A posição ja tem definidos ambos os filhos****");
+							break;
+						}
+						
+						System.out.print("Deseja adicionar no filho da esquerda ou da direita? [E/D] ");
+						String filho = input.nextLine();
+						
+						if (filho.equals("D") || filho.equals("d")) {
+							ArvoreBinaria.insertRight(paiPos, key);
+							System.out.println("\nA String " + key + " foi adicionada no filho da direita de '" + paiPos.element() + "'");
+						} else if (filho.equals("E") || filho.equals("e")) {
+							ArvoreBinaria.insertLeft(paiPos, key);
+							System.out.println("\nA String '" + key + "' foi adicionada no filho da esquerda de '" + paiPos.element() + "'");
+						} else
+							System.out.print("****Opção inválida****");
+					}
+					break;
+
+				case 2:
+					System.out.print("\nDigite a String da posição que deseja remover: ");
+					input.nextLine();
+					String removeElem = input.nextLine();
+					Position<String> removePos = null;
+					
+					for (Position<String> w : ArvoreBinaria.positions()) {
+						if (removeElem.equals(w.element()))
+							removePos = w;
+					}
+					
+					try {
+						ArvoreBinaria.remove(removePos);
+					} catch (InvalidPositionException e) {
+						System.out.println("****" + removeElem + " não existe na Árvore****");
+						break;
+					}
+					System.out.println("\nO elemento " + removeElem + " foi removido da Árvore");
+					break;
+
+				case 3:
+					try {
+						System.out.print("\nArvore Binária atual: ");
+						ArvoreBinaria.printExpression(ArvoreBinaria, ArvoreBinaria.root());
+					} catch (EmptyTreeException e) {
+						System.out.println("****Árvore Binária vazia****");
+						break;
+					}
+					System.out.println("");
+					break;
+
+				default:
+					System.out.println("Opção inválida");
+			}
+		}
+	}
+    
+    public void printExpression(LinkedBinaryTree<E> T, Position<E> v) {
+        if(T.isInternal(v)) System.out.print("(");
+        if(T.hasLeft(v)) printExpression(T, T.left(v));
+        if(T.isInternal(v)) {
+            System.out.print("-" + v.element() + "-");
+        }
+        else {
+            System.out.print(v.element());
+        }
+        if(T.hasRight(v)) printExpression(T, T.right(v));
+        if(T.isInternal(v)) System.out.print(")");
+	}
 
     public boolean isInternal(Position<E> v) throws InvalidPositionException {
         checkPosition(v);

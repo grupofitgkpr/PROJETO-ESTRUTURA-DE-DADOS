@@ -61,11 +61,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 5:
                 	System.out.println("**Texto Explicativo**");
-                    //LinkedTree.interface_Arvore_Generica();                 NÃO CONSEGUI PEDRO DESCULPA
+                    //LinkedTree.interface_Arvore_Generica();
                     break;
                 case 6:
                 	System.out.println("**Texto Explicativo**");
-                	//LinkedBinaryTree.interface_Arvore_Binaria();            NÃO CONSEGUI PEDRO DESCULPA
+                	LinkedBinaryTree.interface_Arvore_Binaria();
                     break;
                 case 7:
                 	System.out.println("**Texto Explicativo**");
@@ -81,11 +81,11 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 10:
                 	System.out.println("**Texto Explicativo**");
-                	//BinarySearchTree.interface_Mapa_ABB();                  NÃO CONSEGUI PEDRO DESCULPA
+                	//BinarySearchTree.interface_Mapa_ABB();
                     break;
                 case 11:
                 	System.out.println("**Texto Explicativo**");
-                	//AVLTreeMap.interface_Mapa_AVL();                        NÃO CONSEGUI PEDRO DESCULPA
+                	//AVLTreeMap.interface_Mapa_AVL();
                     break;
                 case 12:
                 	System.out.println("**Texto Explicativo**"

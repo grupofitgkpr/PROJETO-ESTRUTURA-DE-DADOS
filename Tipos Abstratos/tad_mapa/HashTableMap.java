@@ -167,7 +167,7 @@ public class HashTableMap<K, V> implements Map<K, V> {
 
 		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>();
 		boolean exit = false;
-		Scanner input = new Scanner(System.in);;
+		Scanner input = new Scanner(System.in);
 
 		while (!exit) {
 			System.out.print("\n --- Interface de Usuário ---:\n"
@@ -232,6 +232,5 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					System.out.println("Opção inválida");
 			}
 		}
-
 	}
 }
