@@ -80,7 +80,7 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					break;
 				
 				case 3:
-					System.out.print("Mapa atual: ");
+					System.out.print("\nMapa atual: ");
 					System.out.println(Dicionario.entrySet().toString());
 					break;
 				

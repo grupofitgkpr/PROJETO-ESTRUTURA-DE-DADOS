@@ -1,14 +1,3 @@
-/exceptions/
-/interfaces/
 /source/
-/tad_arvore_binaria/
-/tad_arvore_genérica/
-/tad_dicionário/
-/tad_fila/
-/tad_lista_arranjo/
-/tad_lista_de_nodos/
-/tad_lista_prioridade/
 /tad_mapa/
-/tad_mapa_ordenado_ABB/
-/tad_mapa_ordenado_AVL/
-/tad_pilha/
+/tad_dicionário/

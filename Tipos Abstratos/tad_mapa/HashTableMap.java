@@ -2,7 +2,6 @@ package tad_mapa;
 
 import interfaces.Entry;
 import exceptions.InvalidKeyException;
-import tad_dicionário.HashTableMultiMap;
 import tad_lista_de_nodos.NodePositionList;
 import interfaces.PositionList;
 import interfaces.Map;
@@ -197,9 +196,13 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					input.nextLine();
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();
-
-					Mapa.put(key, value);
-					System.out.println("\nChave adicionada: " + key);
+					
+					String anterior = Mapa.put(key, value);
+					System.out.println("\nChave adicionada: " + key + "=" + value);
+					if (anterior != null)
+						System.out.println("Chave já existente foi removida: " + key + "=" + anterior);
+					
+					
 					break;
 
 				case 2:

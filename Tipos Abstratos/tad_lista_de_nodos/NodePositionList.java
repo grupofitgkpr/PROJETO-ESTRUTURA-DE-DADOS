@@ -6,7 +6,6 @@ import java.util.Scanner;
 import exceptions.*;
 import interfaces.Position;
 import interfaces.PositionList;
-import tad_fila.Queue;
 
 public class NodePositionList<E> implements PositionList<E> {
 	protected int numElts; // Número de elementos na lista
@@ -89,13 +88,13 @@ public class NodePositionList<E> implements PositionList<E> {
 						break;
 					}
 						
-					Position<Integer> nodo2 = Nodo.first();
+					Position<Integer> nodo = Nodo.first();
 					for (int x = 0; x < indiceRemover; x++) {
-						nodo2 = Nodo.next(nodo2);
+						nodo = Nodo.next(nodo);
 					}
 					
-					int elemento = nodo2.element();
-					Nodo.remove(nodo2);
+					int elemento = nodo.element();
+					Nodo.remove(nodo);
 					System.out.print("O elemento " + elemento + " no indice " + indiceRemover + " foi removido.\n");
 					break;
 					
@@ -103,7 +102,7 @@ public class NodePositionList<E> implements PositionList<E> {
 					System.out.print("\nLista de Nodos atual: ");
 					System.out.println(Nodo.toString());
 					break;
-
+				
 				default:
 					System.out.println("Opção inválida");
 			}
