@@ -80,7 +80,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 	}
 
 	public static void interface_Lista_Arranjo() {
-		ArrayIndexList<Integer> Arranjo = new ArrayIndexList<Integer>();
+		ArrayIndexList<String> Arranjo = new ArrayIndexList<String>();
 		
 		boolean exit = false;
 		Scanner input = new Scanner(System.in);
@@ -100,27 +100,27 @@ public class ArrayIndexList<E> implements IndexList<E> {
 	
 				case 1:
 					Integer indice = null;
-					Integer valor = null;
 	
 					try {
-						System.out.print("\nDigite o indice onde deseja inserir: ");
+						System.out.print("\nDigite o indice onde deseja inserir: intervalo entre [0-" + Arranjo.size() + "] ");
 						indice = input.nextInt();
-						
-						System.out.print("Digite o valor que será armazenado no indice: ");
-						valor = input.nextInt();
 					} catch (InputMismatchException e) {
-						System.out.println("****Indice ou valor de tipo inválido****");
+						System.out.println("\n****Indice de tipo inválido****");
 						input.nextLine();
 						break;
 					} 
 					
-					try{ Arranjo.add(indice, valor); }
-					catch (IndexOutOfBoundsException e) {
-						System.out.println("****Indice fora do limite do arranjo****");
-						input.nextLine();
+					if (indice < 0 || indice > Arranjo.size()) {
+						System.out.println("\n****Indice fora do limite do arranjo****");
 						break;
 					}
-					System.out.println("\nValor adicionado: "+ Arranjo.get(indice));
+					
+					System.out.print("Digite o elemento que será armazenado no indice: ");
+					input.nextLine();
+					String valor = input.nextLine();
+
+					Arranjo.add(indice, valor); 
+					System.out.println("\nElemento adicionado: " + valor);
 					break;
 					
 				case 2:
@@ -129,18 +129,20 @@ public class ArrayIndexList<E> implements IndexList<E> {
 	
 					try {
 						indiceRemover = input.nextInt();
-						int elemento = Arranjo.get(indiceRemover);
-						Arranjo.remove(indiceRemover);
-						System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
 					} catch (InputMismatchException e) {
 						System.out.println("	****Valor de tipo inválido****");
 						input.nextLine();
 						break;
-					} catch (IndexOutOfBoundsException e) {
-						System.out.println("****Indice fora do limite do arranjo****");
-						input.nextLine();
+					} 
+					
+					if (indiceRemover < 0 || indiceRemover >= Arranjo.size()) {
+						System.out.println("\n****Indice fora do limite do arranjo****");
 						break;
 					}
+					
+					String elemento = Arranjo.get(indiceRemover);
+					Arranjo.remove(indiceRemover);
+					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
 					break;
 	
 				case 3:
@@ -149,7 +151,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					break;
 				
 				default:
-					System.out.println("Opção inválida");
+					System.out.println("\n****Opção inválida****");
 			}
 		}
 	}

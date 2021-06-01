@@ -115,11 +115,18 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					}
 					
 					try {
-						ArvoreBinaria.remove(removePos);
+						ArvoreBinaria.checkPosition(removePos);
 					} catch (InvalidPositionException e) {
-						System.out.println("****" + removeElem + " não existe na Árvore****");
+						System.out.println("\n****" + removeElem + " não existe na Árvore****");
 						break;
 					}
+					
+					if (ArvoreBinaria.hasRight(removePos) && ArvoreBinaria.hasLeft(removePos)) {
+						System.out.println("\n****Não é possivel remover um nodo que tenha 2 filhos****");
+						break;
+					}
+					
+					ArvoreBinaria.remove(removePos);
 					System.out.println("\nO elemento " + removeElem + " foi removido da Árvore");
 					break;
 
@@ -135,7 +142,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					break;
 
 				default:
-					System.out.println("Opção inválida");
+					System.out.println("\n****Opção inválida****");
 			}
 		}
 	}

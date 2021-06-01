@@ -12,6 +12,55 @@ public class NodeQueue<E> implements Queue<E> {
         head = tail = null;
         size = 0;
     }
+    
+    public static void interface_Fila() {
+        NodeQueue<String> Fila = new NodeQueue<String>();
+
+        boolean exit = false;
+        Scanner input = new Scanner(System.in);
+
+        while (!exit) {
+            System.out.print("\n --- Interface de Usuário ---:\n"
+                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+                    + "[1] Adicionar na fila\n"
+                    + "[2] Remover primeiro da fila\n"
+                    + "[3] Visualizar\n"
+                    + "Digite a opção: ");
+            int opc = input.nextInt();
+            switch (opc) {
+                case 0:
+                    exit = true;
+                    break;
+
+                case 1:
+                    System.out.print("\nDigite o elemento a ser inserido na fila: ");
+                    input.nextLine();
+                    String elemento = input.nextLine();
+
+                    Fila.enqueue(elemento);
+                    System.out.println("\nElemento adicionado: " + elemento);
+                    break;
+
+                case 2:
+
+                    try {
+                        System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
+                    } catch (EmptyQueueException e) {
+                        System.out.println("\n****A fila esta vazia****");
+                        input.nextLine();
+                        break;
+                    }
+                    break;
+
+                case 3:
+                	 System.out.println("\nFila atual: " + Fila.toString());
+                     break;
+                
+                default:
+                    System.out.println("\n****Opção inválida****");
+            }
+        }
+    }
 
     public int size() {
         return size;
@@ -63,63 +112,5 @@ public class NodeQueue<E> implements Queue<E> {
         if (s.length() > 1)
             s = s.substring(0, s.length() - 2);
         return s + "]";
-    }
-
-    public static void interface_Fila() {
-        NodeQueue<Integer> Fila = new NodeQueue<Integer>();
-
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
-
-        while (!exit) {
-            System.out.print("\n --- Interface de Usuário ---:\n"
-                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-                    + "[1] Adicionar na fila\n"
-                    + "[2] Remover primeiro da fila\n"
-                    + "[3] Visualizar\n"
-                    + "Digite a opção: ");
-            int opc = input.nextInt();
-            switch (opc) {
-                case 0:
-                    exit = true;
-                    break;
-
-                case 1:
-                    System.out.print("\nDigite o elemento a ser inserido na fila: ");
-                    Integer elemento = null;
-
-                    try {
-                        elemento = input.nextInt();
-                    } catch (InputMismatchException e) {
-                        System.out.println("	****Valor inválido****");
-                        input.nextLine();
-                        break;
-                    }
-
-                    Fila.enqueue(elemento);
-                    System.out.println("\nValor adicionado: " + elemento);
-                    break;
-
-                case 2:
-
-                    try {
-                        System.out.println("\nO valor " + Fila.front() + " foi removido.");
-                        Fila.dequeue();
-                    } catch (EmptyQueueException e) {
-                        System.out.println("	****A fila esta vazia****");
-                        input.nextLine();
-                        break;
-                    }
-                    break;
-
-                case 3:
-                	 System.out.print("\nFila atual: ");
-                     System.out.println(Fila.toString());
-                     break;
-                
-                default:
-                    System.out.println("Opção inválida");
-            }
-        }
     }
 }

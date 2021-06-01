@@ -8,13 +8,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ArrayStack<E> implements Stack<E> {
-
     protected int capacity;
-
     public static final int CAPACITY = 1000;
-
     protected E S[];
-
     protected int top = -1;
 
     public ArrayStack() {
@@ -26,7 +22,52 @@ public class ArrayStack<E> implements Stack<E> {
         capacity = cap;
         S = (E[]) new Object[capacity];
     }
+    
+    public static void interface_Pilha() {
+        ArrayStack<String> Pilha = new ArrayStack<String>();
+        boolean exit = false;
+        Scanner input = new Scanner(System.in);
 
+        while (!exit) {
+            System.out.print("\n --- Interface de Usuário ---:\n"
+                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+                    + "[1] Adicionar na pilha\n"
+                    + "[2] Remover topo da pilha\n"
+                    + "[3] Visualizar\n"
+                    + "Digite a opção: ");
+            int opc = input.nextInt();
+            switch (opc) {
+                case 0:
+                    exit = true;
+                    break;
+
+                case 1:
+                    System.out.print("\nDigite o valor a ser inserido: ");
+                    input.nextLine();
+                    String valorAdicionar = input.nextLine();
+                    
+                    Pilha.push(valorAdicionar);
+                    System.out.println("\nValor adicionado ao topo: " + valorAdicionar);
+                    break;
+
+                case 2:
+                    try {
+                    	System.out.println("\nO elemento '" + Pilha.pop() + "' foi removido.");
+                    } catch (EmptyStackException e) {
+                        System.out.println("\n    ****Pilha vazia****");
+                        break;
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("\nPilha atual: " + Pilha.toString());
+                    break;
+
+                default:
+                    System.out.println("\n****Opção inválida****");
+            }
+        }
+    }
 
     public int size() {
         return (top + 1);
@@ -65,60 +106,5 @@ public class ArrayStack<E> implements Stack<E> {
             }
         }
         return s + "]";
-    }
-
-    public static void interface_Pilha() {
-        ArrayStack<Integer> Pilha = new ArrayStack<Integer>();
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
-
-        while (!exit) {
-            System.out.print("\n --- Interface de Usuário ---:\n"
-                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-                    + "[1] Adicionar na pilha\n"
-                    + "[2] Remover topo da pilha\n"
-                    + "[3] Visualizar\n"
-                    + "Digite a opção: ");
-            int opc = input.nextInt();
-            switch (opc) {
-                case 0:
-                    exit = true;
-                    break;
-
-                case 1:
-                    System.out.print("\nDigite o valor a ser inserido (Valor inteiro): ");
-                    Integer valorAdicionar = 0;
-                    try {
-                        valorAdicionar = input.nextInt();
-                    } catch (InputMismatchException e) {
-                        System.out.println("	****Valor inválido****");
-                        input.nextLine();
-                        break;
-                    }
-                    
-                    Pilha.push(valorAdicionar);
-                    System.out.println("Valor adicionado a pilha: " + valorAdicionar);
-                    break;
-
-                case 2:
-                	Integer elemento = null;
-                    try {
-                        elemento = Pilha.pop();
-                    } catch (EmptyStackException e) {
-                        System.out.println("    ****Pilha vazia****");
-                        break;
-                    }
-                    System.out.println("\nO elemento " + elemento + " foi removido.");
-                    break;
-
-                case 3:
-                    System.out.print("\nPilha atual: ");
-                    System.out.println(Pilha.toString());
-                    break;
-
-                default:
-                    System.out.println("Opção inválida");
-            }
-        }
     }
 }
