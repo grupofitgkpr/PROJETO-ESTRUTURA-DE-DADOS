@@ -21,7 +21,7 @@ public class NodePositionList<E> implements PositionList<E> {
 	}
 	
 	public static void interface_Lista_Nodos() {
-		NodePositionList<Integer> Nodo = new NodePositionList<Integer>();
+		NodePositionList<String> Nodo = new NodePositionList<String>();
 
 		boolean exit = false;
 		Scanner input = new Scanner(System.in);
@@ -42,69 +42,54 @@ public class NodePositionList<E> implements PositionList<E> {
 					break;
 
 				case 1:
+					input.nextLine();
 					System.out.print("\nDigite o valor que será armazenado na primeira posição: ");
-					Integer valor = null;
-					try {
-						valor = input.nextInt();
-					} catch (InputMismatchException e) {
-						System.out.println("	****Valor de tipo inválido****");
-						input.nextLine();
-						break;
-					}
+					String valor = input.nextLine();
 					
 					Nodo.addFirst(valor);
 					System.out.println("\nValor adicionado na primeira posição: " + valor);
 					break;
 						
 				case 2:
+					input.nextLine();
 					System.out.print("\nDigite o valor que será armazenado na ultima posição: ");
-					Integer valor2 = null;
-					try {
-						valor2 = input.nextInt();
-					} catch (InputMismatchException e) {
-						System.out.println("	****Valor de tipo inválido****");
-						input.nextLine();
-						break;
-					}
+					String valor2 = input.nextLine();
 					
 					Nodo.addLast(valor2);
 					System.out.println("\nValor adicionado na ultima posição: " + valor2);
 					break;
 					
 				case 3:
-					Integer indiceRemover = null;
+					if (Nodo.isEmpty()) {
+						System.out.println("\n****A lista está vazia****");
+						break;
+					}
 					
+					input.nextLine();
+					System.out.print("\nDigite o valor do elemento que deseja remover: ");
+					String elementoRemover = input.nextLine();
+					
+					Position<String> nodo = Nodo.first();
 					try {
-						System.out.print("\nDigite o índice que deseja remover: ");
-						indiceRemover = input.nextInt();
-						if (indiceRemover >= Nodo.size()) { throw new InvalidPositionException(""); }
-					} catch (InputMismatchException e) {
-						System.out.println("****Valor de tipo inválido****");
-						input.nextLine();
+						for (int x = 0; x < Nodo.size()+1; x++)
+							if (nodo.element().equals(elementoRemover))
+								break;
+							else nodo = Nodo.next(nodo);
+					} catch (BoundaryViolationException e) {
+						System.out.println("\n****O elemento '" + elementoRemover + "' não existe na lista****");
 						break;
-					} catch (InvalidPositionException e) {
-						System.out.println("****Indice ultrapassa limite da lista****");
-						input.nextLine();
-						break;
-					}
-						
-					Position<Integer> nodo = Nodo.first();
-					for (int x = 0; x < indiceRemover; x++) {
-						nodo = Nodo.next(nodo);
-					}
-					
-					int elemento = nodo.element();
+					} 
+
 					Nodo.remove(nodo);
-					System.out.print("O elemento " + elemento + " no indice " + indiceRemover + " foi removido.\n");
+					System.out.println("\nO elemento '" + elementoRemover + "' foi removido.");
 					break;
 					
 				case 4:
-					System.out.print("\nLista de Nodos atual: ");
-					System.out.println(Nodo.toString());
+					System.out.println("\nLista de Nodos atual: " + Nodo.toString());
 					break;
 				
 				default:
-					System.out.println("Opção inválida");
+					System.out.println("\n****Opção inválida****");
 			}
 		}
 	}

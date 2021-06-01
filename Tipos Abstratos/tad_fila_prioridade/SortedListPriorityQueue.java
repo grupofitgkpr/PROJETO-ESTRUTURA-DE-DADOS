@@ -1,10 +1,9 @@
-package tad_lista_prioridade;
+package tad_fila_prioridade;
 
 import java.util.Comparator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import exceptions.EmptyStackException;
 import interfaces.Entry;
 import exceptions.DefaultComparator;
 import exceptions.EmptyPriorityQueueException;
@@ -12,7 +11,6 @@ import exceptions.InvalidKeyException;
 import interfaces.Position;
 import tad_lista_de_nodos.NodePositionList;
 import interfaces.PositionList;
-import tad_pilha.ArrayStack;
 
 
 public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
@@ -136,8 +134,8 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
         return entries.toString();
     }
 
-    public static void interface_Lista_Prioridades() {
-        SortedListPriorityQueue<Integer, String> listaPrioritaria = new SortedListPriorityQueue<>();
+    public static void interface_Fila_Prioridades() {
+        SortedListPriorityQueue<Integer, String> filaPrioritaria = new SortedListPriorityQueue<>();
         boolean exit = false;
         Scanner input = new Scanner(System.in);
 
@@ -145,7 +143,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar\n"
-                    + "[2] Remover chave mínima\n"
+                    + "[2] Remover menor chave\n"
                     + "[3] Visualizar\n"
                     + "Digite a opção: ");
             int opc = input.nextInt();
@@ -160,7 +158,7 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     try {
                         key = input.nextInt();
                     } catch (InputMismatchException e) {
-                        System.out.println("	****Valor inválido****");
+                        System.out.println("\n****Valor de tipo inválido****");
                         input.nextLine();
                         break;
                     }
@@ -169,31 +167,27 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     System.out.print("Digite a String que será armazenada na chave: ");
                     String value = input.nextLine();
 
-                    String valorAdd = listaPrioritaria.insert(key, value).toString();
-                    System.out.println("\nChave adicionada: " + valorAdd);
+                    String valorAdd = filaPrioritaria.insert(key, value).toString();
+                    System.out.println("\nElemento adicionado: " + valorAdd);
                     break;
 
                 case 2:
                     try {
-                        System.out.println("\nO valor " + listaPrioritaria.min() + " foi removido.");
-                        listaPrioritaria.removeMin();
+                        System.out.println("\nO valor " + filaPrioritaria.removeMin() + " foi removido.");
                     } catch (EmptyPriorityQueueException e) {
-                        System.out.println("	****Lista prioritária vazia****");
+                        System.out.println("\n****Fila de Prioridades vazia****");
                         input.nextLine();
                         break;
                     }
                     break;
 
                 case 3:
-                    System.out.print("\nLista de Prioridade atual: ");
-                    System.out.println(listaPrioritaria.toString());
+                    System.out.print("\nFila de Prioridade atual: " + filaPrioritaria.toString());
                     break;
                     
                 default:
-                    System.out.println("Opção inválida");
+                    System.out.println("\n****Opção inválida****");
             }
         }
-
-
     }
 }

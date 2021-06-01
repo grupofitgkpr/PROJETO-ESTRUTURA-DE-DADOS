@@ -188,7 +188,7 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
-						System.out.println("	****Valor inválido****");
+						System.out.println("\n****Valor de tipo inválido****");
 						input.nextLine();
 						break;
 					}
@@ -198,11 +198,9 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					String value = input.nextLine();
 					
 					String anterior = Mapa.put(key, value);
-					System.out.println("\nChave adicionada: " + key + "=" + value);
+					System.out.println("\nElemento adicionado: " + key + "=" + value);
 					if (anterior != null)
-						System.out.println("Chave já existente foi removida: " + key + "=" + anterior);
-					
-					
+						System.out.println("Elemento anterior de mesma chave foi removido: " + key + "=" + anterior);
 					break;
 
 				case 2:
@@ -210,26 +208,24 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					Integer removeKey = null;
 					try {
 						removeKey = input.nextInt();
-						System.out.println("\nChave removida: " + removeKey);
-						Mapa.remove(removeKey);
+						System.out.println("\nElemento removido: " + Mapa.remove(removeKey));
 					} catch (InputMismatchException e) {
-						System.out.println("	**** Valor inválido ****");
+						System.out.println("\n****Valor de tipo inválido****");
 						input.nextLine();
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("	**** A chave '" + removeKey + "' não existe no Dicionário ****");
+						System.out.println("\n****A chave '" + removeKey + "' não existe no Mapa****");
 						input.nextLine();
 						break;
 					}
 					break;
 
 				case 3:
-					System.out.print("Mapa atual: ");
-					System.out.println(Mapa.entrySet().toString());
+					System.out.print("Mapa atual: " + Mapa.entrySet().toString());
 					break;
 
 				default:
-					System.out.println("Opção inválida");
+					System.out.println("\n****Opção inválida****");
 			}
 		}
 	}

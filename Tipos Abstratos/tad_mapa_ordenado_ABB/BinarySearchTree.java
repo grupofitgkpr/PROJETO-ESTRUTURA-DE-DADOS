@@ -1,5 +1,8 @@
 package tad_mapa_ordenado_ABB;
 import java.util.Comparator;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import interfaces.Entry;
 import interfaces.Map;
 import exceptions.DefaultComparator;
@@ -159,9 +162,9 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 	public String printExpression(Position<Entry<K, V>> v) {
 		String s = "";
 		if (isInternal(v)) s += "(";
-		if (hasLeft(v)) s += printExpression(left(v));
+		if (hasLeft(v)) s += printExpression(left(v)) + "-";
 		if (v.element()!=null) s += v.element().getKey().toString();
-		if (hasRight(v)) s += printExpression(right(v));
+		if (hasRight(v)) s += "-" + printExpression(right(v));
 		if (isInternal(v)) s += ")";
 		return s;
 	}
@@ -217,6 +220,78 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 	}
 
 	public static void interface_Mapa_ABB() {
-	}
+		BinarySearchTree<Integer, String> arvoreBinariaBusca = new BinarySearchTree<Integer, String>();
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Remover\n"
+					+ "[3] Visualizar\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
 
+				case 1:
+					System.out.print("\nDigite o valor da chave que será adicionada (Valor inteiro): ");
+					Integer key = null;
+					try {
+						key = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					}
+
+					input.nextLine();
+					System.out.print("Digite a String que será armazenada na chave: ");
+					String value = input.nextLine();
+					
+					arvoreBinariaBusca.put(key, value);
+					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
+					break;
+
+				case 2:
+					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
+					Integer keyRemover = null;
+					try {
+						keyRemover = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					}
+					
+					boolean verifica = false;
+					for (int keyVerifica : arvoreBinariaBusca.keySet())
+						if (keyVerifica == keyRemover) {
+							verifica = true;
+							break;
+						}
+							
+					if (verifica) {
+						arvoreBinariaBusca.remove(keyRemover);
+						System.out.println("\nO elemento '" + keyRemover + "' foi removido da Árvore");
+					} else {
+						System.out.println("\n**** Chave '" + keyRemover + "' não existe na Árvore****");
+						break;
+					}
+					break;
+
+				case 3:
+					System.out.println("\nConjunto de  chaves atual: " + arvoreBinariaBusca.keySet().toString());
+					System.out.println("Conjunto de strings atual: " + arvoreBinariaBusca.values().toString());
+					System.out.println("Arvore Binária atual: " + arvoreBinariaBusca.printExpression(arvoreBinariaBusca.root()));
+					break;
+
+				default:
+					System.out.println("\n****Opção inválida****");
+			}
+		}
+	}
 }

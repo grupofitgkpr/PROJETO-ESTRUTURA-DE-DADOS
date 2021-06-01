@@ -1,6 +1,9 @@
 package tad_mapa_ordenado_AVL;
 
 import java.util.Comparator;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import interfaces.Entry;
 import interfaces.Map;
 import interfaces.Position;
@@ -87,5 +90,80 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 	if (toReturn != null) // nós realmente removemos algo
 	rebalance(actionPos); // rebalanceia a árvore
 	return toReturn;
+	}
+	public static void interface_Mapa_AVL() {
+		AVLTreeMap<Integer, String> mapaAVL = new AVLTreeMap<Integer, String>();
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Remover\n"
+					+ "[3] Visualizar\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
+
+				case 1:
+					System.out.print("\nDigite o valor da chave que será adicionada (Valor inteiro): ");
+					Integer key = null;
+					try {
+						key = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					}
+
+					input.nextLine();
+					System.out.print("Digite a String que será armazenada na chave: ");
+					String value = input.nextLine();
+					
+					mapaAVL.put(key, value);
+					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
+					break;
+
+				case 2:
+					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
+					Integer keyRemover = null;
+					try {
+						keyRemover = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					}
+					
+					boolean verifica = false;
+					for (int keyVerifica : mapaAVL.keySet())
+						if (keyVerifica == keyRemover) {
+							verifica = true;
+							break;
+						}
+							
+					if (verifica) {
+						mapaAVL.remove(keyRemover);
+						System.out.println("\nO elemento '" + keyRemover + "' foi removido da Árvore");
+					} else {
+						System.out.println("\n**** Chave '" + keyRemover + "' não existe na Árvore****");
+						break;
+					}
+					break;
+
+				case 3:
+					System.out.println("\nConjunto de  chaves atual: " + mapaAVL.keySet().toString());
+					System.out.println("Conjunto de strings atual: " + mapaAVL.values().toString());
+					System.out.println("Arvore Binária atual: " + mapaAVL.printExpression(mapaAVL.root()));
+					break;
+
+				default:
+					System.out.println("\n****Opção inválida****");
+			}
+		}
 	}
 }

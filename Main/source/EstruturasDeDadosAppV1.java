@@ -6,9 +6,9 @@ import tad_arvore_binaria.LinkedBinaryTree;
 import tad_arvore_genérica.LinkedTree;
 import tad_dicionário.HashTableMultiMap;
 import tad_fila.NodeQueue;
+import tad_fila_prioridade.SortedListPriorityQueue;
 import tad_lista_arranjo.ArrayIndexList;
 import tad_lista_de_nodos.NodePositionList;
-import tad_lista_prioridade.SortedListPriorityQueue;
 import tad_mapa.HashTableMap;
 import tad_mapa_ordenado_ABB.BinarySearchTree;
 import tad_mapa_ordenado_AVL.AVLTreeMap;
@@ -30,7 +30,7 @@ public class EstruturasDeDadosAppV1 {
             System.out.println("[1] TAD Lista Arranjo		[2] TAD Pilha\n"
                               +"[3] TAD Fila			[4] TAD Lista de Nodos\n"
                               +"[5] TAD Árvore Genética		[6] TAD Árvore Binária\n"
-                              +"[7] TAD Fila de Prioridade	[8] TAD Mapa\n"
+                              +"[7] TAD Fila de Prioridades	[8] TAD Mapa\n"
                               +"[9] TAD Dicionário		[10] TAD Mapa Ordenado ABB\n"
                               +"[11] TAD Mapa Ordenado AVL	[12] TAD Grafos\n"
                               +"		[0] Encerrar programa\n");
@@ -72,7 +72,7 @@ public class EstruturasDeDadosAppV1 {
                 			+ "A Lista de Nodos é uma coleção de diversos elementos que estão \n"
                 			+ "armazenados numa ordem linear, mas diferente da Lista Arranjo \n"
                 			+ "essa lista não usa índices para armazenar seus elementos e sim, referências\n"
-                			+ "de qual é o próximo nodo ou qual é o nodo anterior ao nodo que está sendo acessado.");
+                			+ "de qual é o próximo nodo e qual é o nodo anterior ao nodo que está sendo acessado.");
                 	NodePositionList.interface_Lista_Nodos();
                     break;
                 case 5:
@@ -81,7 +81,7 @@ public class EstruturasDeDadosAppV1 {
                 			+ "e pode ter quantos filhos o usuário desejar.\n"
                 			+ "\nCada nova inserção precisará de uma string para ser armazenada e um nodo 'pai' (exceto a raiz)\n"
                 			+ "\nNão é possivel fazer remoções na Árvore Genérica");
-                    //LinkedTree.interface_Arvore_Generica();
+                    LinkedTree.interface_Arvore_Generica();
                     break;
                 case 6:
                 	System.out.println("\n --- Árvore Binária ---:\n"
@@ -95,7 +95,7 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 7:
                 	System.out.println("**Texto Explicativo**");
-                	SortedListPriorityQueue.interface_Lista_Prioridades();
+                	SortedListPriorityQueue.interface_Fila_Prioridades();
                     break;
                 case 8:
                 	System.out.println("**Texto Explicativo**");
@@ -107,15 +107,14 @@ public class EstruturasDeDadosAppV1 {
                     break;
                 case 10:
                 	System.out.println("**Texto Explicativo**");
-                	//BinarySearchTree.interface_Mapa_ABB();
+                	BinarySearchTree.interface_Mapa_ABB();
                     break;
                 case 11:
                 	System.out.println("**Texto Explicativo**");
-                	//AVLTreeMap.interface_Mapa_AVL();
+                	AVLTreeMap.interface_Mapa_AVL();
                     break;
                 case 12:
-                	System.out.println("**Texto Explicativo**"
-                			+ "Esse aqui é só explicar, não tem a implementação");
+                	System.out.println("**Texto Explicativo**");
                     break;
                 default:
                     System.out.println("\n****Opção inválida****");

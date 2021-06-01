@@ -1,4 +1,4 @@
-package tad_lista_prioridade;
+package tad_fila_prioridade;
 import exceptions.EmptyPriorityQueueException;
 import exceptions.InvalidKeyException;
 import interfaces.Entry;

@@ -26,7 +26,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     }
     
     public static void interface_Arvore_Binaria() {
-		LinkedBinaryTree<String> ArvoreBinaria = new LinkedBinaryTree<String>();
+		LinkedBinaryTree<String> arvoreBinaria = new LinkedBinaryTree<String>();
 		boolean exit = false, msg = false;
 		Scanner input = new Scanner(System.in);
 		
@@ -48,8 +48,8 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					input.nextLine();
 					String key = input.nextLine();
 					
-					if (ArvoreBinaria.isEmpty()) {
-						ArvoreBinaria.addRoot(key);
+					if (arvoreBinaria.isEmpty()) {
+						arvoreBinaria.addRoot(key);
 						System.out.println("\nRaiz adicionada: " + key);
 					} else {
 						System.out.print("\nA String precisa de um nodo pai para ser adicionada, "
@@ -57,20 +57,20 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 						String paiElem = input.nextLine();
 						Position<String> paiPos = null;
 						
-						for (Position<String> w : ArvoreBinaria.positions()) {
+						for (Position<String> w : arvoreBinaria.positions()) {
 							if (paiElem.equals(w.element()))
 								paiPos = w;
 						}
 						
 						try {
-							ArvoreBinaria.checkPosition(paiPos);
+							arvoreBinaria.checkPosition(paiPos);
 						} catch (InvalidPositionException e) {
-							System.out.println("****" + paiElem + " não existe na Árvore****");
+							System.out.println("\n****" + paiElem + " não existe na Árvore****");
 							break;
 						}
 						
-						if (ArvoreBinaria.hasRight(paiPos) && ArvoreBinaria.hasLeft(paiPos)) {
-							System.out.print("****A posição ja tem definidos ambos os filhos****");
+						if (arvoreBinaria.hasRight(paiPos) && arvoreBinaria.hasLeft(paiPos)) {
+							System.out.print("\n****A posição ja tem definidos ambos os filhos****");
 							break;
 						}
 						
@@ -78,21 +78,21 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 						String filho = input.nextLine();
 						
 						if (filho.equals("D") || filho.equals("d")) {
-							if (ArvoreBinaria.hasRight(paiPos)) {
+							if (arvoreBinaria.hasRight(paiPos)) {
 								System.out.println("\n****Filho direito de '" + paiElem + "' está ocupado pelo elemento '" 
-												 + ArvoreBinaria.right(paiPos).element() + "'****");
+												 + arvoreBinaria.right(paiPos).element() + "'****");
 								break;
 							}
-							ArvoreBinaria.insertRight(paiPos, key);
+							arvoreBinaria.insertRight(paiPos, key);
 							System.out.println("\nA String '" + key + "' foi adicionada no filho da direita de '" + paiElem + "'");
 						} 
 						else if (filho.equals("E") || filho.equals("e")) {
-							if (ArvoreBinaria.hasLeft(paiPos)) {
+							if (arvoreBinaria.hasLeft(paiPos)) {
 								System.out.println("\n****Filho esquerdo de '" + paiElem + "' está ocupado pelo elemento '" 
-											     + ArvoreBinaria.left(paiPos).element() + "'****");
+											     + arvoreBinaria.left(paiPos).element() + "'****");
 								break;
 							}
-							ArvoreBinaria.insertLeft(paiPos, key);
+							arvoreBinaria.insertLeft(paiPos, key);
 							System.out.println("\nA String '" + key + "' foi adicionada no filho da esquerda de '" + paiElem + "'");
 						} else
 							System.out.println("\n****Opção inválida****");
@@ -109,31 +109,31 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					String removeElem = input.nextLine();
 					Position<String> removePos = null;
 					
-					for (Position<String> w : ArvoreBinaria.positions()) {
+					for (Position<String> w : arvoreBinaria.positions()) {
 						if (removeElem.equals(w.element()))
 							removePos = w;
 					}
 					
 					try {
-						ArvoreBinaria.checkPosition(removePos);
+						arvoreBinaria.checkPosition(removePos);
 					} catch (InvalidPositionException e) {
 						System.out.println("\n****" + removeElem + " não existe na Árvore****");
 						break;
 					}
 					
-					if (ArvoreBinaria.hasRight(removePos) && ArvoreBinaria.hasLeft(removePos)) {
+					if (arvoreBinaria.hasRight(removePos) && arvoreBinaria.hasLeft(removePos)) {
 						System.out.println("\n****Não é possivel remover um nodo que tenha 2 filhos****");
 						break;
 					}
 					
-					ArvoreBinaria.remove(removePos);
+					arvoreBinaria.remove(removePos);
 					System.out.println("\nO elemento " + removeElem + " foi removido da Árvore");
 					break;
 
 				case 3:
 					try {
 						System.out.print("\nArvore Binária atual: ");
-						ArvoreBinaria.printExpression(ArvoreBinaria, ArvoreBinaria.root());
+						arvoreBinaria.printExpression(arvoreBinaria, arvoreBinaria.root());
 					} catch (EmptyTreeException e) {
 						System.out.println("****Árvore Binária vazia****");
 						break;

@@ -33,23 +33,20 @@ public class NodeQueue<E> implements Queue<E> {
                     break;
 
                 case 1:
-                    System.out.print("\nDigite o elemento a ser inserido na fila: ");
+                    System.out.print("\nDigite o elemento a ser colocado na fila: ");
                     input.nextLine();
                     String elemento = input.nextLine();
 
                     Fila.enqueue(elemento);
-                    System.out.println("\nElemento adicionado: " + elemento);
+                    System.out.println("\nElemento adicionado no fim da fila: " + elemento);
                     break;
 
                 case 2:
-
-                    try {
-                        System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
-                    } catch (EmptyQueueException e) {
-                        System.out.println("\n****A fila esta vazia****");
-                        input.nextLine();
-                        break;
-                    }
+                	if (Fila.isEmpty()) {
+                		System.out.println("\n****A fila está vazia****");
+                		break;
+                	}
+                    System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
                     break;
 
                 case 3:

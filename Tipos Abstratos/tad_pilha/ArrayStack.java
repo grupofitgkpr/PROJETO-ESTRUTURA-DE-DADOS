@@ -42,21 +42,20 @@ public class ArrayStack<E> implements Stack<E> {
                     break;
 
                 case 1:
-                    System.out.print("\nDigite o valor a ser inserido: ");
+                    System.out.print("\nDigite o valor a ser inserido no topo: ");
                     input.nextLine();
                     String valorAdicionar = input.nextLine();
                     
                     Pilha.push(valorAdicionar);
-                    System.out.println("\nValor adicionado ao topo: " + valorAdicionar);
+                    System.out.println("\nElemento adicionado ao topo: " + valorAdicionar);
                     break;
 
                 case 2:
-                    try {
-                    	System.out.println("\nO elemento '" + Pilha.pop() + "' foi removido.");
-                    } catch (EmptyStackException e) {
-                        System.out.println("\n    ****Pilha vazia****");
-                        break;
-                    }
+                	if (Pilha.isEmpty()) {
+                		System.out.println("\n****Pilha vazia****");
+                		break;
+                	}
+                    System.out.println("\nO elemento '" + Pilha.pop() + "' foi removido.");
                     break;
 
                 case 3:

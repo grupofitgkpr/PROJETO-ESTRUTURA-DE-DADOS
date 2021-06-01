@@ -13,7 +13,83 @@ public class ArrayIndexList<E> implements IndexList<E> {
 	public ArrayIndexList() {
 		A = (E[]) new Object[capacity];
 	}
+	
+	public static void interface_Lista_Arranjo() {
+		ArrayIndexList<String> Arranjo = new ArrayIndexList<String>();
+		
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+						   + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+						   + "[1] Adicionar\n"
+						   + "[2] Remover\n"
+						   + "[3] Visualizar\n"
+						   + "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
+	
+				case 1:
+					Integer indice = null;
+	
+					try {
+						System.out.print("\nDigite o indice onde deseja inserir: intervalo entre [0-" + Arranjo.size() + "] ");
+						indice = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Indice de tipo inválido****");
+						input.nextLine();
+						break;
+					} 
+					
+					if (indice < 0 || indice > Arranjo.size()) {
+						System.out.println("\n****Indice fora do limite do arranjo****");
+						break;
+					}
+					
+					System.out.print("Digite o elemento que será armazenado no indice: ");
+					input.nextLine();
+					String valor = input.nextLine();
 
+					Arranjo.add(indice, valor); 
+					System.out.println("\nElemento " + valor + " adicionado no índice " + indice);
+					break;
+					
+				case 2:
+					System.out.print("\nDigite o índice que deseja remover: ");
+					Integer indiceRemover = null;
+	
+					try {
+						indiceRemover = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Indice de tipo inválido****");
+						input.nextLine();
+						break;
+					} 
+					
+					if (indiceRemover < 0 || indiceRemover >= Arranjo.size()) {
+						System.out.println("\n****Indice fora do limite do arranjo****");
+						break;
+					}
+					
+					String elemento = Arranjo.get(indiceRemover);
+					Arranjo.remove(indiceRemover);
+					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
+					break;
+	
+				case 3:
+					System.out.println("\nLista Arranjo Atual: " + Arranjo.toString());
+					break;
+				
+				default:
+					System.out.println("\n****Opção inválida****");
+			}
+		}
+	}
+	
 	public int size() {
 		return size;
 	}
@@ -77,82 +153,5 @@ public class ArrayIndexList<E> implements IndexList<E> {
 		for (int i = 0; i < size(); i++) toReturn += A[i].toString() + ", ";
 		
 		return toReturn.substring(0, toReturn.length() - 2) + ")";
-	}
-
-	public static void interface_Lista_Arranjo() {
-		ArrayIndexList<String> Arranjo = new ArrayIndexList<String>();
-		
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-		
-		while (!exit) {
-			System.out.print("\n --- Interface de Usuário ---:\n"
-						   + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-						   + "[1] Adicionar\n"
-						   + "[2] Remover\n"
-						   + "[3] Visualizar\n"
-						   + "Digite a opção: ");
-			int opc = input.nextInt();
-			switch(opc) {
-				case 0:
-					exit = true;
-					break;
-	
-				case 1:
-					Integer indice = null;
-	
-					try {
-						System.out.print("\nDigite o indice onde deseja inserir: intervalo entre [0-" + Arranjo.size() + "] ");
-						indice = input.nextInt();
-					} catch (InputMismatchException e) {
-						System.out.println("\n****Indice de tipo inválido****");
-						input.nextLine();
-						break;
-					} 
-					
-					if (indice < 0 || indice > Arranjo.size()) {
-						System.out.println("\n****Indice fora do limite do arranjo****");
-						break;
-					}
-					
-					System.out.print("Digite o elemento que será armazenado no indice: ");
-					input.nextLine();
-					String valor = input.nextLine();
-
-					Arranjo.add(indice, valor); 
-					System.out.println("\nElemento adicionado: " + valor);
-					break;
-					
-				case 2:
-					System.out.print("\nDigite o índice que deseja remover: ");
-					Integer indiceRemover = null;
-	
-					try {
-						indiceRemover = input.nextInt();
-					} catch (InputMismatchException e) {
-						System.out.println("	****Valor de tipo inválido****");
-						input.nextLine();
-						break;
-					} 
-					
-					if (indiceRemover < 0 || indiceRemover >= Arranjo.size()) {
-						System.out.println("\n****Indice fora do limite do arranjo****");
-						break;
-					}
-					
-					String elemento = Arranjo.get(indiceRemover);
-					Arranjo.remove(indiceRemover);
-					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
-					break;
-	
-				case 3:
-					System.out.print("\nLista Arranjo Atual: ");
-					System.out.println(Arranjo.toString());
-					break;
-				
-				default:
-					System.out.println("\n****Opção inválida****");
-			}
-		}
 	}
 }

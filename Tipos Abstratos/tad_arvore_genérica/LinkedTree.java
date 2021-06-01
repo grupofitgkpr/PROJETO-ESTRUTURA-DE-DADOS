@@ -1,5 +1,7 @@
 package tad_arvore_genérica;
 import java.util.Iterator;
+import java.util.Scanner;
+
 import exceptions.BoundaryViolationException;
 import exceptions.EmptyTreeException;
 import exceptions.InvalidPositionException;
@@ -8,6 +10,7 @@ import tad_lista_de_nodos.NodePositionList;
 import interfaces.Position;
 import interfaces.PositionList;
 import interfaces.Tree;
+import tad_arvore_binaria.LinkedBinaryTree;
 
 //Um classe para a árvore ligada onde os nodos têm um número arbitrário de filhos.
 public class LinkedTree<E> implements Tree<E> {
@@ -23,6 +26,83 @@ public class LinkedTree<E> implements Tree<E> {
 	// Retorna um número de nodos da árvore
 	public int size() {
 		return size;
+	}
+	
+	public static void interface_Arvore_Generica() {
+		LinkedTree<String> arvoreGenerica = new LinkedTree<String>();
+		boolean exit = false, msg = false;
+		Scanner input = new Scanner(System.in);
+		
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Visualizar\n"
+					+ "Digite a opção: ");
+			int opc = input.nextInt();
+			switch(opc) {
+				case 0:
+					exit = true;
+					break;
+
+				case 1:
+					System.out.print("\nDigite a String que será guardada na árvore: ");
+					input.nextLine();
+					String key = input.nextLine();
+					
+					if (arvoreGenerica.isEmpty()) {
+						arvoreGenerica.addRoot(key);
+						System.out.println("\nRaiz adicionada: " + key);
+					} else {
+						System.out.print("\nA String precisa de um nodo pai para ser adicionada, "
+									   + "digite a String de um nodo: ");
+						String paiElem = input.nextLine();
+						TreeNode<String> paiPos = null;
+						
+						for (Position<String> w : arvoreGenerica.positions()) {
+							if (paiElem.equals(w.element()))
+								paiPos = (TreeNode<String>) w;
+						}
+						
+						try {
+							arvoreGenerica.checkPosition(paiPos);
+						} catch (InvalidPositionException e) {
+							System.out.println("****" + paiElem + " não existe na Árvore****");
+							break;
+						}
+						
+						arvoreGenerica.criarFilho(paiPos, key);
+					}
+					break;
+					
+				case 2:
+					try {
+						System.out.println("\nArvore Genérica atual: " + arvoreGenerica.parentheticRepresentation(arvoreGenerica, arvoreGenerica.root()));
+					} catch (EmptyTreeException e) {
+						System.out.println("\n****Árvore Binária vazia****");
+						break;
+					}
+					break;
+
+				default:
+					System.out.println("\n****Opção inválida****");
+			}
+		}
+	}
+	
+	public TreeNode<String> criarFilho(TreeNode<String> p, String n) {
+		PositionList<Position<String>> filhos;
+		TreeNode<String> aux;
+		
+		// Obtém os Filhos de p
+		filhos = p.getChildren();
+		// Cria um novo filho
+		aux = new TreeNode<String>();
+		aux.setElement(n);
+		aux.setParent(p);
+		aux.setChildren(new NodePositionList<Position<String>>());
+		filhos.addLast(aux);
+		return aux;
 	}
 	
 	// EXERCICIO 3-A

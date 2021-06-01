@@ -48,7 +48,7 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
-						System.out.println("	****Valor inválido****");
+						System.out.println("\n****Valor de tipo inválido****");
 						input.nextLine();
 						break;
 					}
@@ -58,34 +58,33 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					String value = input.nextLine();
 					
 					String valorAdd = Dicionario.put(key, value).toString();
-					System.out.println("\nChave adicionada: " + valorAdd);
+					System.out.println("\nElemento adicionado: " + valorAdd);
 					break;
 				
 				case 2:
-					System.out.print("Digite o valor da chave que será removida (Valor inteiro): ");
+					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer rkey = null;
 					try {
 						rkey = input.nextInt();
 						String rvalor = Dicionario.remove(Dicionario.get(rkey)).toString();
-						System.out.println("\nChave removida: " + rvalor);
+						System.out.println("\nElemento removido: " + rvalor);
 					} catch (InputMismatchException e) {
-						System.out.println("	**** Valor inválido ****");
+						System.out.println("\n****Valor de tipo inválido****");
 						input.nextLine();
 						break;
 					} catch (IllegalArgumentException e) {
-						System.out.println("	**** A chave '" + rkey + "' não existe no Dicionário ****");
+						System.out.println("\n****A chave '" + rkey + "' não existe no Dicionário****");
 						input.nextLine();
 						break;
 					}
 					break;
 				
 				case 3:
-					System.out.print("\nMapa atual: ");
-					System.out.println(Dicionario.entrySet().toString());
+					System.out.print("\nDicionário atual: " + Dicionario.entrySet().toString());
 					break;
 				
 				default:
-					System.out.println("Opção inválida");
+					System.out.println("\n****Opção inválida****");
 			}
 		}
 	}
