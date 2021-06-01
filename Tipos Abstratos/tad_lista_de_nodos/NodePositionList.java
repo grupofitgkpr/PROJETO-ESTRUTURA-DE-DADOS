@@ -1,5 +1,4 @@
 package tad_lista_de_nodos;
-import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 

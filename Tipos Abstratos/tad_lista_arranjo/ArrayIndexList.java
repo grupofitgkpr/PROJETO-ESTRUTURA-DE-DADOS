@@ -27,13 +27,13 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						   + "[2] Remover\n"
 						   + "[3] Visualizar\n"
 						   + "Digite a opção: ");
-			int opc = input.nextInt();
+			String opc = input.nextLine();
 			switch(opc) {
-				case 0:
+				case "0":
 					exit = true;
 					break;
 	
-				case 1:
+				case "1":
 					Integer indice = null;
 	
 					try {
@@ -47,6 +47,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					
 					if (indice < 0 || indice > Arranjo.size()) {
 						System.out.println("\n****Indice fora do limite do arranjo****");
+						input.nextLine();
 						break;
 					}
 					
@@ -58,7 +59,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					System.out.println("\nElemento " + valor + " adicionado no índice " + indice);
 					break;
 					
-				case 2:
+				case "2":
 					System.out.print("\nDigite o índice que deseja remover: ");
 					Integer indiceRemover = null;
 	
@@ -72,15 +73,17 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					
 					if (indiceRemover < 0 || indiceRemover >= Arranjo.size()) {
 						System.out.println("\n****Indice fora do limite do arranjo****");
+						input.nextLine();
 						break;
 					}
 					
+					input.nextLine();
 					String elemento = Arranjo.get(indiceRemover);
 					Arranjo.remove(indiceRemover);
 					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
 					break;
 	
-				case 3:
+				case "3":
 					System.out.println("\nLista Arranjo Atual: " + Arranjo.toString());
 					break;
 				

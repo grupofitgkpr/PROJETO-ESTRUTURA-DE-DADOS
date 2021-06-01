@@ -37,15 +37,14 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					+ "[2] Remover\n"
 					+ "[3] Visualizar\n"
 					+ "Digite a opção: ");
-			int opc = input.nextInt();
+			String opc = input.nextLine();
 			switch(opc) {
-				case 0:
+				case "0":
 					exit = true;
 					break;
 
-				case 1:
+				case "1":
 					System.out.print("\nDigite a String que será guardada na árvore: ");
-					input.nextLine();
 					String key = input.nextLine();
 					
 					if (arvoreBinaria.isEmpty()) {
@@ -70,7 +69,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 						}
 						
 						if (arvoreBinaria.hasRight(paiPos) && arvoreBinaria.hasLeft(paiPos)) {
-							System.out.print("\n****A posição ja tem definidos ambos os filhos****");
+							System.out.println("\n****A posição ja tem definidos ambos os filhos****");
 							break;
 						}
 						
@@ -99,19 +98,20 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					}
 					break;
 
-				case 2:
+				case "2":
 					if (!msg) {
-						System.out.print("\nCaso haja 2 ou mais Strings com o mesmo nome, será removido a ocorrência mais a direita da Árvore");
+						System.out.print("\nCaso haja 2 ou mais Strings com o mesmo nome, será removido a ocorrência mais a esquerda da Árvore");
 						msg = true;
 					}
 					System.out.print("\nDigite a String da posição que deseja remover: ");
-					input.nextLine();
 					String removeElem = input.nextLine();
 					Position<String> removePos = null;
 					
 					for (Position<String> w : arvoreBinaria.positions()) {
-						if (removeElem.equals(w.element()))
+						if (removeElem.equals(w.element())) {
 							removePos = w;
+							break;
+						}
 					}
 					
 					try {
@@ -127,12 +127,12 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 					}
 					
 					arvoreBinaria.remove(removePos);
-					System.out.println("\nO elemento " + removeElem + " foi removido da Árvore");
+					System.out.println("\nO elemento '" + removeElem + "' foi removido da Árvore");
 					break;
 
-				case 3:
+				case "3":
 					try {
-						System.out.print("\nArvore Binária atual: ");
+						System.out.print("\nÁrvore Binária atual: ");
 						arvoreBinaria.printExpression(arvoreBinaria, arvoreBinaria.root());
 					} catch (EmptyTreeException e) {
 						System.out.println("****Árvore Binária vazia****");

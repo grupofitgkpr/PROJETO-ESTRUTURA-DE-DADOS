@@ -42,6 +42,62 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
             return "(" + k + "," + v + ")";
         }
     }
+    
+    public static void interface_Fila_Prioridades() {
+        SortedListPriorityQueue<Integer, String> filaPrioritaria = new SortedListPriorityQueue<>();
+        boolean exit = false;
+        Scanner input = new Scanner(System.in);
+
+        while (!exit) {
+            System.out.print("\n --- Interface de Usuário ---:\n"
+                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+                    + "[1] Adicionar\n"
+                    + "[2] Remover elemento de menor chave\n"
+                    + "[3] Visualizar\n"
+                    + "Digite a opção: ");
+            String opc = input.nextLine();
+            switch (opc) {
+                case "0":
+                    exit = true;
+                    break;
+
+                case "1":
+                    System.out.print("\nDigite o valor da chave (Valor inteiro): ");
+                    Integer key = null;
+                    try {
+                        key = input.nextInt();
+                    } catch (InputMismatchException e) {
+                        System.out.println("\n****Valor de tipo inválido****");
+                        input.nextLine();
+                        break;
+                    }
+
+                    input.nextLine();
+                    System.out.print("Digite a String que será armazenada na chave: ");
+                    String value = input.nextLine();
+
+                    String valorAdd = filaPrioritaria.insert(key, value).toString();
+                    System.out.println("\nElemento adicionado: " + valorAdd);
+                    break;
+
+                case "2":
+                    try {
+                        System.out.println("\nO valor " + filaPrioritaria.removeMin() + " foi removido.");
+                    } catch (EmptyPriorityQueueException e) {
+                        System.out.println("\n****Fila de Prioridades vazia****");
+                        break;
+                    }
+                    break;
+
+                case "3":
+                    System.out.println("\nFila de Prioridade atual: " + filaPrioritaria.toString());
+                    break;
+                    
+                default:
+                    System.out.println("\n****Opção inválida****");
+            }
+        }
+    }
 
     // Cria a fila de prioridades com o comparador padrão
     public SortedListPriorityQueue() {
@@ -132,62 +188,5 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
     // Sebrescreve toString, útil para a depuração.
     public String toString() {
         return entries.toString();
-    }
-
-    public static void interface_Fila_Prioridades() {
-        SortedListPriorityQueue<Integer, String> filaPrioritaria = new SortedListPriorityQueue<>();
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
-
-        while (!exit) {
-            System.out.print("\n --- Interface de Usuário ---:\n"
-                    + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-                    + "[1] Adicionar\n"
-                    + "[2] Remover menor chave\n"
-                    + "[3] Visualizar\n"
-                    + "Digite a opção: ");
-            int opc = input.nextInt();
-            switch (opc) {
-                case 0:
-                    exit = true;
-                    break;
-
-                case 1:
-                    System.out.print("\nDigite o valor da chave (Valor inteiro): ");
-                    Integer key = null;
-                    try {
-                        key = input.nextInt();
-                    } catch (InputMismatchException e) {
-                        System.out.println("\n****Valor de tipo inválido****");
-                        input.nextLine();
-                        break;
-                    }
-
-                    input.nextLine();
-                    System.out.print("Digite a String que será armazenada na chave: ");
-                    String value = input.nextLine();
-
-                    String valorAdd = filaPrioritaria.insert(key, value).toString();
-                    System.out.println("\nElemento adicionado: " + valorAdd);
-                    break;
-
-                case 2:
-                    try {
-                        System.out.println("\nO valor " + filaPrioritaria.removeMin() + " foi removido.");
-                    } catch (EmptyPriorityQueueException e) {
-                        System.out.println("\n****Fila de Prioridades vazia****");
-                        input.nextLine();
-                        break;
-                    }
-                    break;
-
-                case 3:
-                    System.out.print("\nFila de Prioridade atual: " + filaPrioritaria.toString());
-                    break;
-                    
-                default:
-                    System.out.println("\n****Opção inválida****");
-            }
-        }
     }
 }

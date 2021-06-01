@@ -36,13 +36,13 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 						   + "[2] Remover\n"
 						   + "[3] Visualizar\n"
 						   + "Digite a opção: ");
-			int opc = input.nextInt();
+			String opc = input.nextLine();
 			switch(opc) {
-				case 0:
+				case "0":
 					exit = true;
 					break;
 	
-				case 1:
+				case "1":
 					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
 					Integer key = null;
 					try {
@@ -61,7 +61,7 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					System.out.println("\nElemento adicionado: " + valorAdd);
 					break;
 				
-				case 2:
+				case "2":
 					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer rkey = null;
 					try {
@@ -77,10 +77,11 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 						input.nextLine();
 						break;
 					}
+					input.nextLine();
 					break;
 				
-				case 3:
-					System.out.print("\nDicionário atual: " + Dicionario.entrySet().toString());
+				case "3":
+					System.out.println("\nDicionário atual: " + Dicionario.entrySet().toString());
 					break;
 				
 				default:

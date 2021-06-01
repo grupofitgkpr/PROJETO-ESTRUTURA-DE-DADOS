@@ -43,6 +43,83 @@ public class HashTableMap<K, V> implements Map<K, V> {
 			return "(" + key + "," + value + ")";
 		}
 	}
+	
+	public static void interface_Mapa() {
+
+		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>();
+		boolean exit = false;
+		Scanner input = new Scanner(System.in);
+
+		while (!exit) {
+			System.out.print("\n --- Interface de Usuário ---:\n"
+					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
+					+ "[1] Adicionar\n"
+					+ "[2] Remover\n"
+					+ "[3] Visualizar\n"
+					+ "Digite a opção: ");
+			String opc = input.nextLine();
+			switch(opc) {
+				case "0":
+					exit = true;
+					break;
+
+				case "1":
+					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
+					Integer key = null;
+					try {
+						key = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					}
+
+					input.nextLine();
+					System.out.print("Digite a String que será armazenada na chave: ");
+					String value = input.nextLine();
+					
+					String anterior = Mapa.put(key, value);
+					System.out.println("\nElemento adicionado: " + key + "=" + value);
+					if (anterior != null)
+						System.out.println("Elemento anterior de mesma chave foi removido: " + key + "=" + anterior);
+					break;
+
+				case "2":
+					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
+					Integer removeKey = null;
+					try {
+						removeKey = input.nextInt();
+					} catch (InputMismatchException e) {
+						System.out.println("\n****Valor de tipo inválido****");
+						input.nextLine();
+						break;
+					} 
+					
+					boolean verifica = false;
+					for (int keyVerifica : Mapa.keySet())
+						if (keyVerifica == removeKey) {
+							verifica = true;
+							break;
+						}
+							
+					if (verifica)
+						System.out.println("\nElemento removido: " + removeKey + "=" + Mapa.remove(removeKey));
+					else
+						System.out.println("\n****A chave '" + removeKey + "' não existe no Mapa****");
+					
+					input.nextLine();
+					break;
+
+				case "3":
+					System.out.println("\nMapa atual: " + Mapa.entrySet().toString());
+					break;
+
+				default:
+					System.out.println("\n****Opção inválida****");
+			}
+		}
+	}
+	
 	protected Entry<K, V> AVAILABLE = new HashEntry<K, V>(null, null);
 	protected int n = 0; // número de entradas no mapa
 	protected int prime, capacity; // fator primo e capacidade do array de buckets
@@ -161,72 +238,5 @@ public class HashTableMap<K, V> implements Map<K, V> {
 		for (int i = 0; i < capacity; i++)
 			if ((bucket[i] != null) && (bucket[i] != AVAILABLE)) values.addLast(bucket[i].getValue());
 		return values;
-	}
-
-	public static void interface_Mapa() {
-
-		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-
-		while (!exit) {
-			System.out.print("\n --- Interface de Usuário ---:\n"
-					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
-					+ "[1] Adicionar\n"
-					+ "[2] Remover\n"
-					+ "[3] Visualizar\n"
-					+ "Digite a opção: ");
-			int opc = input.nextInt();
-			switch(opc) {
-				case 0:
-					exit = true;
-					break;
-
-				case 1:
-					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
-					Integer key = null;
-					try {
-						key = input.nextInt();
-					} catch (InputMismatchException e) {
-						System.out.println("\n****Valor de tipo inválido****");
-						input.nextLine();
-						break;
-					}
-
-					input.nextLine();
-					System.out.print("Digite a String que será armazenada na chave: ");
-					String value = input.nextLine();
-					
-					String anterior = Mapa.put(key, value);
-					System.out.println("\nElemento adicionado: " + key + "=" + value);
-					if (anterior != null)
-						System.out.println("Elemento anterior de mesma chave foi removido: " + key + "=" + anterior);
-					break;
-
-				case 2:
-					System.out.print("Digite o valor da chave que será removida (Valor inteiro): ");
-					Integer removeKey = null;
-					try {
-						removeKey = input.nextInt();
-						System.out.println("\nElemento removido: " + Mapa.remove(removeKey));
-					} catch (InputMismatchException e) {
-						System.out.println("\n****Valor de tipo inválido****");
-						input.nextLine();
-						break;
-					} catch (IllegalArgumentException e) {
-						System.out.println("\n****A chave '" + removeKey + "' não existe no Mapa****");
-						input.nextLine();
-						break;
-					}
-					break;
-
-				case 3:
-					System.out.print("Mapa atual: " + Mapa.entrySet().toString());
-					break;
-
-				default:
-					System.out.println("\n****Opção inválida****");
-			}
-		}
 	}
 }

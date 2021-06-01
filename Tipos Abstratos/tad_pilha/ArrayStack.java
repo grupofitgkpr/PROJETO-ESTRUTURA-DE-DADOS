@@ -35,22 +35,21 @@ public class ArrayStack<E> implements Stack<E> {
                     + "[2] Remover topo da pilha\n"
                     + "[3] Visualizar\n"
                     + "Digite a opção: ");
-            int opc = input.nextInt();
+            String opc = input.nextLine();
             switch (opc) {
-                case 0:
+                case "0":
                     exit = true;
                     break;
 
-                case 1:
+                case "1":
                     System.out.print("\nDigite o valor a ser inserido no topo: ");
-                    input.nextLine();
                     String valorAdicionar = input.nextLine();
                     
                     Pilha.push(valorAdicionar);
                     System.out.println("\nElemento adicionado ao topo: " + valorAdicionar);
                     break;
 
-                case 2:
+                case "2":
                 	if (Pilha.isEmpty()) {
                 		System.out.println("\n****Pilha vazia****");
                 		break;
@@ -58,7 +57,7 @@ public class ArrayStack<E> implements Stack<E> {
                     System.out.println("\nO elemento '" + Pilha.pop() + "' foi removido.");
                     break;
 
-                case 3:
+                case "3":
                     System.out.println("\nPilha atual: " + Pilha.toString());
                     break;
 

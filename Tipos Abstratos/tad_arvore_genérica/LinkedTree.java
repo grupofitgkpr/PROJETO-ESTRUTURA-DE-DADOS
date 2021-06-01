@@ -10,7 +10,6 @@ import tad_lista_de_nodos.NodePositionList;
 import interfaces.Position;
 import interfaces.PositionList;
 import interfaces.Tree;
-import tad_arvore_binaria.LinkedBinaryTree;
 
 //Um classe para a árvore ligada onde os nodos têm um número arbitrário de filhos.
 public class LinkedTree<E> implements Tree<E> {
@@ -30,7 +29,7 @@ public class LinkedTree<E> implements Tree<E> {
 	
 	public static void interface_Arvore_Generica() {
 		LinkedTree<String> arvoreGenerica = new LinkedTree<String>();
-		boolean exit = false, msg = false;
+		boolean exit = false;
 		Scanner input = new Scanner(System.in);
 		
 		while (!exit) {
@@ -39,43 +38,48 @@ public class LinkedTree<E> implements Tree<E> {
 					+ "[1] Adicionar\n"
 					+ "[2] Visualizar\n"
 					+ "Digite a opção: ");
-			int opc = input.nextInt();
+			String opc = input.nextLine();
 			switch(opc) {
-				case 0:
+				case "0":
 					exit = true;
 					break;
 
-				case 1:
+				case "1":
 					System.out.print("\nDigite a String que será guardada na árvore: ");
-					input.nextLine();
 					String key = input.nextLine();
 					
 					if (arvoreGenerica.isEmpty()) {
 						arvoreGenerica.addRoot(key);
+						TreeNode<String> raiz = (TreeNode<String>) arvoreGenerica.root();
+						raiz.setChildren(new NodePositionList<Position<String>>());
 						System.out.println("\nRaiz adicionada: " + key);
 					} else {
-						System.out.print("\nA String precisa de um nodo pai para ser adicionada, "
+						System.out.print("A String precisa de um nodo pai para ser adicionada, "
 									   + "digite a String de um nodo: ");
 						String paiElem = input.nextLine();
 						TreeNode<String> paiPos = null;
 						
 						for (Position<String> w : arvoreGenerica.positions()) {
-							if (paiElem.equals(w.element()))
+							if (paiElem.equals(w.element())) {
 								paiPos = (TreeNode<String>) w;
+								break;
+							}
 						}
 						
 						try {
 							arvoreGenerica.checkPosition(paiPos);
 						} catch (InvalidPositionException e) {
-							System.out.println("****" + paiElem + " não existe na Árvore****");
+							System.out.println("\n****" + paiElem + " não existe na Árvore****");
 							break;
 						}
 						
 						arvoreGenerica.criarFilho(paiPos, key);
+						System.out.println("\nO elemento '" + key + "' foi adicionado como um filho de '" + paiElem + "'");
 					}
+					
 					break;
 					
-				case 2:
+				case "2":
 					try {
 						System.out.println("\nArvore Genérica atual: " + arvoreGenerica.parentheticRepresentation(arvoreGenerica, arvoreGenerica.root()));
 					} catch (EmptyTreeException e) {

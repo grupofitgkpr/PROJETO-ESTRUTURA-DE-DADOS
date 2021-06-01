@@ -1,6 +1,5 @@
 package tad_fila;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class NodeQueue<E> implements Queue<E> {
@@ -26,22 +25,21 @@ public class NodeQueue<E> implements Queue<E> {
                     + "[2] Remover primeiro da fila\n"
                     + "[3] Visualizar\n"
                     + "Digite a opção: ");
-            int opc = input.nextInt();
+            String opc = input.nextLine();
             switch (opc) {
-                case 0:
+                case "0":
                     exit = true;
                     break;
 
-                case 1:
+                case "1":
                     System.out.print("\nDigite o elemento a ser colocado na fila: ");
-                    input.nextLine();
                     String elemento = input.nextLine();
 
                     Fila.enqueue(elemento);
                     System.out.println("\nElemento adicionado no fim da fila: " + elemento);
                     break;
 
-                case 2:
+                case "2":
                 	if (Fila.isEmpty()) {
                 		System.out.println("\n****A fila está vazia****");
                 		break;
@@ -49,7 +47,7 @@ public class NodeQueue<E> implements Queue<E> {
                     System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
                     break;
 
-                case 3:
+                case "3":
                 	 System.out.println("\nFila atual: " + Fila.toString());
                      break;
                 
