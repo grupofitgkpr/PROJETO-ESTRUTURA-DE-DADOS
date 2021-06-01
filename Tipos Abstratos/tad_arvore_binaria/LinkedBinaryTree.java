@@ -27,7 +27,7 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
     
     public static void interface_Arvore_Binaria() {
 		LinkedBinaryTree<String> ArvoreBinaria = new LinkedBinaryTree<String>();
-		boolean exit = false;
+		boolean exit = false, msg = false;
 		Scanner input = new Scanner(System.in);
 		
 		while (!exit) {
@@ -52,7 +52,8 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 						ArvoreBinaria.addRoot(key);
 						System.out.println("\nRaiz adicionada: " + key);
 					} else {
-						System.out.print("\nA String precisa de um pai para ser adicionada, digite a String de um pai: ");
+						System.out.print("\nA String precisa de um nodo pai para ser adicionada, "
+									   + "digite a String de um nodo: ");
 						String paiElem = input.nextLine();
 						Position<String> paiPos = null;
 						
@@ -77,17 +78,32 @@ public class LinkedBinaryTree<E> implements BinaryTree<E> {
 						String filho = input.nextLine();
 						
 						if (filho.equals("D") || filho.equals("d")) {
+							if (ArvoreBinaria.hasRight(paiPos)) {
+								System.out.println("\n****Filho direito de '" + paiElem + "' está ocupado pelo elemento '" 
+												 + ArvoreBinaria.right(paiPos).element() + "'****");
+								break;
+							}
 							ArvoreBinaria.insertRight(paiPos, key);
-							System.out.println("\nA String " + key + " foi adicionada no filho da direita de '" + paiPos.element() + "'");
-						} else if (filho.equals("E") || filho.equals("e")) {
+							System.out.println("\nA String '" + key + "' foi adicionada no filho da direita de '" + paiElem + "'");
+						} 
+						else if (filho.equals("E") || filho.equals("e")) {
+							if (ArvoreBinaria.hasLeft(paiPos)) {
+								System.out.println("\n****Filho esquerdo de '" + paiElem + "' está ocupado pelo elemento '" 
+											     + ArvoreBinaria.left(paiPos).element() + "'****");
+								break;
+							}
 							ArvoreBinaria.insertLeft(paiPos, key);
-							System.out.println("\nA String '" + key + "' foi adicionada no filho da esquerda de '" + paiPos.element() + "'");
+							System.out.println("\nA String '" + key + "' foi adicionada no filho da esquerda de '" + paiElem + "'");
 						} else
-							System.out.print("****Opção inválida****");
+							System.out.println("\n****Opção inválida****");
 					}
 					break;
 
 				case 2:
+					if (!msg) {
+						System.out.print("\nCaso haja 2 ou mais Strings com o mesmo nome, será removido a ocorrência mais a direita da Árvore");
+						msg = true;
+					}
 					System.out.print("\nDigite a String da posição que deseja remover: ");
 					input.nextLine();
 					String removeElem = input.nextLine();
