@@ -44,13 +44,12 @@ public class HashTableMap<K, V> implements Map<K, V> {
 		}
 	}
 	
-	public static void interface_Mapa() {
+	public static void interface_Mapa() { // Interface - Projeto Estrutura de Dados
+		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 
-		HashTableMap<Integer, String> Mapa = new HashTableMap<Integer, String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-
-		while (!exit) {
+        while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 					+ "[1] Adicionar\n"
@@ -59,13 +58,15 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					+ "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 
-				case "1":
+				case "1": // ADICIONAR
 					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
 					Integer key = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -78,15 +79,18 @@ public class HashTableMap<K, V> implements Map<K, V> {
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();
 					
+					// Adiciona o par de chave e valor no Mapa
 					String anterior = Mapa.put(key, value);
 					System.out.println("\nElemento adicionado: " + key + "=" + value);
-					if (anterior != null)
+					if (anterior != null) // Se a chave estivesse sendo utilizada por outro elemento, lança aviso de sobrescrita
 						System.out.println("Elemento anterior de mesma chave foi removido: " + key + "=" + anterior);
 					break;
 
-				case "2":
+				case "2": // REMOVER
 					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer removeKey = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						removeKey = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -95,22 +99,17 @@ public class HashTableMap<K, V> implements Map<K, V> {
 						break;
 					} 
 					
-					boolean verifica = false;
-					for (int keyVerifica : Mapa.keySet())
-						if (keyVerifica == removeKey) {
-							verifica = true;
-							break;
-						}
-							
-					if (verifica)
-						System.out.println("\nElemento removido: " + removeKey + "=" + Mapa.remove(removeKey));
+					// Verifica se a chave existe na lista, se não encontrar lança mensagem de erro
+					String verifica = Mapa.remove(Mapa.findEntry(removeKey));
+					if (verifica != null)
+						System.out.println("\nElemento removido: " + removeKey + "=" + verifica);
 					else
 						System.out.println("\n****A chave '" + removeKey + "' não existe no Mapa****");
-					
 					input.nextLine();
 					break;
 
-				case "3":
+				case "3": // VISUALIZAR
+					// Printa o Mapa na tela
 					System.out.println("\nMapa atual: " + Mapa.entrySet().toString());
 					break;
 

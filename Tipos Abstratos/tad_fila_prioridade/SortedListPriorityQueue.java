@@ -43,12 +43,12 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
         }
     }
     
-    public static void interface_Fila_Prioridades() {
-        SortedListPriorityQueue<Integer, String> filaPrioritaria = new SortedListPriorityQueue<>();
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
+    public static void interface_Fila_Prioridades() { // Interface - Projeto Estrutura de Dados
+        SortedListPriorityQueue<Integer, String> filaPrioritaria = new SortedListPriorityQueue<>(); // Inicializa a estrutura
+        boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 
-        while (!exit) {
+        while (!exit) { // Loop de Interface
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar\n"
@@ -57,13 +57,15 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     + "Digite a opção: ");
             String opc = input.nextLine();
             switch (opc) {
-                case "0":
+                case "0": // VOLTAR
                     exit = true;
                     break;
 
-                case "1":
+                case "1": // ADICIONAR
                     System.out.print("\nDigite o valor da chave (Valor inteiro): ");
                     Integer key = null;
+                    
+                    // Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
                     try {
                         key = input.nextInt();
                     } catch (InputMismatchException e) {
@@ -75,12 +77,16 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     input.nextLine();
                     System.out.print("Digite a String que será armazenada na chave: ");
                     String value = input.nextLine();
-
+                    
+                    // Adiciona na Fila Prioritaria o par de Key e Value
                     String valorAdd = filaPrioritaria.insert(key, value).toString();
                     System.out.println("\nElemento adicionado: " + valorAdd);
                     break;
 
-                case "2":
+                case "2": // REMOVER
+                	
+                	// Verifica e remove o elemento de menor chave da Fila Prioritária
+                	// Caso a Fila esteja vazia, lança mensagem de erro
                     try {
                         System.out.println("\nO valor " + filaPrioritaria.removeMin() + " foi removido.");
                     } catch (EmptyPriorityQueueException e) {
@@ -89,7 +95,8 @@ public class SortedListPriorityQueue<K, V> implements PriorityQueue<K, V> {
                     }
                     break;
 
-                case "3":
+                case "3": // VISUALIZAR
+                	// Printa a Fila de Prioridades na tela
                     System.out.println("\nFila de Prioridade atual: " + filaPrioritaria.toString());
                     break;
                     

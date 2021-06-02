@@ -19,13 +19,12 @@ public class NodePositionList<E> implements PositionList<E> {
 		header.setNext(trailer); // faz a cabeça e a cauda apontarem uma para a outra
 	}
 	
-	public static void interface_Lista_Nodos() {
-		NodePositionList<String> Nodo = new NodePositionList<String>();
+	public static void interface_Lista_Nodos() { // Interface - Projeto Estrutura de Dados
+		NodePositionList<String> Nodo = new NodePositionList<String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-
-		while (!exit) {
+        while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar na primeira posição\n"
@@ -36,29 +35,32 @@ public class NodePositionList<E> implements PositionList<E> {
 			
 			int opc = input.nextInt();
 			switch (opc) {
-				case 0:
+				case 0: // VOLTAR
 					exit = true;
 					break;
 
-				case 1:
+				case 1: // ADICIONAR NA PRIMEIRA POSIÇÃO
 					input.nextLine();
 					System.out.print("\nDigite o valor que será armazenado na primeira posição: ");
 					String valor = input.nextLine();
 					
+					// Adiciona o valor na primeira posição da Lista de Nodos
 					Nodo.addFirst(valor);
 					System.out.println("\nValor adicionado na primeira posição: " + valor);
 					break;
 						
-				case 2:
+				case 2: // ADICIONAR NA ULTIMA POSIÇÃO
 					input.nextLine();
 					System.out.print("\nDigite o valor que será armazenado na ultima posição: ");
-					String valor2 = input.nextLine();
+					String valorUlt = input.nextLine();
 					
-					Nodo.addLast(valor2);
-					System.out.println("\nValor adicionado na ultima posição: " + valor2);
+					// Adiciona o valor na ultima posição da Lista de Nodos
+					Nodo.addLast(valorUlt);
+					System.out.println("\nValor adicionado na ultima posição: " + valorUlt);
 					break;
 					
-				case 3:
+				case 3: // REMOVER
+					// Verifica se a Lista de Nodos está vazia, se estiver lança mensagem de erro
 					if (Nodo.isEmpty()) {
 						System.out.println("\n****A lista está vazia****");
 						break;
@@ -67,23 +69,27 @@ public class NodePositionList<E> implements PositionList<E> {
 					input.nextLine();
 					System.out.print("\nDigite o valor do elemento que deseja remover: ");
 					String elementoRemover = input.nextLine();
-					
 					Position<String> nodo = Nodo.first();
+					
+					// Percorre a Lista de Nodos para encontrar o elemento digitado, se não encontrar lança mensagem de erro
 					try {
-						for (int x = 0; x < Nodo.size()+1; x++)
+						for (int x = 0; x < Nodo.size() + 1; x++)
 							if (nodo.element().equals(elementoRemover))
 								break;
-							else nodo = Nodo.next(nodo);
+							else 
+								nodo = Nodo.next(nodo);
 					} catch (BoundaryViolationException e) {
 						System.out.println("\n****O elemento '" + elementoRemover + "' não existe na lista****");
 						break;
 					} 
-
+					
+					// Remove o elemento digitado da Lista de Nodos
 					Nodo.remove(nodo);
 					System.out.println("\nO elemento '" + elementoRemover + "' foi removido.");
 					break;
 					
-				case 4:
+				case 4: // VISUALIZAR
+					// Printa a Lista de Nodos na tela
 					System.out.println("\nLista de Nodos atual: " + Nodo.toString());
 					break;
 				

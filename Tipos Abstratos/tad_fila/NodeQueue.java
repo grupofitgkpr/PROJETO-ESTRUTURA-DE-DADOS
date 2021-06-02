@@ -12,13 +12,12 @@ public class NodeQueue<E> implements Queue<E> {
         size = 0;
     }
     
-    public static void interface_Fila() {
-        NodeQueue<String> Fila = new NodeQueue<String>();
+    public static void interface_Fila() { // Interface - Projeto Estrutura de Dados
+        NodeQueue<String> Fila = new NodeQueue<String>(); // Inicializa a estrutura
+        boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
-
-        while (!exit) {
+        while (!exit) { // Loop de Interface
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar na fila\n"
@@ -27,29 +26,33 @@ public class NodeQueue<E> implements Queue<E> {
                     + "Digite a opção: ");
             String opc = input.nextLine();
             switch (opc) {
-                case "0":
+                case "0": // VOLTAR
                     exit = true;
                     break;
 
-                case "1":
+                case "1": // ADICIONAR
                     System.out.print("\nDigite o elemento a ser colocado na fila: ");
                     String elemento = input.nextLine();
-
+                    
+                    // Adiciona o elemento no fim da fila
                     Fila.enqueue(elemento);
                     System.out.println("\nElemento adicionado no fim da fila: " + elemento);
                     break;
 
-                case "2":
+                case "2": // REMOVER
+                	// Verifica se a fila está vazia, se estiver lança uma mensagem de erro
                 	if (Fila.isEmpty()) {
                 		System.out.println("\n****A fila está vazia****");
                 		break;
                 	}
+                	// Remove o elemento na frente da fila
                     System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
                     break;
 
-                case "3":
-                	 System.out.println("\nFila atual: " + Fila.toString());
-                     break;
+                case "3": // VISUALIZAR
+                	// Printa a Fila na tela
+                	System.out.println("\nFila atual: " + Fila.toString());
+                    break;
                 
                 default:
                     System.out.println("\n****Opção inválida****");

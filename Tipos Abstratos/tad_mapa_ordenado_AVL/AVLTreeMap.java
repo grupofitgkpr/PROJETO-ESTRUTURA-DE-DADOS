@@ -17,12 +17,12 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 	public AVLTreeMap(Comparator<K> c) { super(c); }
 	public AVLTreeMap() { super(); }
 	
-	public static void interface_Mapa_AVL() {
-		AVLTreeMap<Integer, String> mapaAVL = new AVLTreeMap<Integer, String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-		
-		while (!exit) {
+	public static void interface_Mapa_AVL() { // Interface - Projeto Estrutura de Dados
+		AVLTreeMap<Integer, String> mapaAVL = new AVLTreeMap<Integer, String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
+
+        while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 					+ "[1] Adicionar\n"
@@ -31,13 +31,15 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 					+ "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 
-				case "1":
+				case "1": // ADICIONAR
 					System.out.print("\nDigite o valor da chave que será adicionada (Valor inteiro): ");
 					Integer key = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -50,13 +52,16 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();
 					
+					// Adiciona o par de chave e valor no Mapa Ordenado AVL
 					mapaAVL.put(key, value);
 					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
 					break;
 
-				case "2":
+				case "2": // REMOVER
 					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer keyRemover = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						keyRemover = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -65,22 +70,25 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 						break;
 					}
 					
+					// Verifica se a chave existe no Mapa Ordenado AVL
 					boolean verifica = false;
 					for (int keyVerifica : mapaAVL.keySet())
 						if (keyVerifica == keyRemover) {
 							verifica = true;
 							break;
 						}
-							
+					
+					// Se existir remove do Mapa Ordenado AVL e se não existe, lança mensagem de erro
 					if (verifica) {
 						mapaAVL.remove(keyRemover);
 						System.out.println("\nO elemento '" + keyRemover + "' foi removido da Árvore");
 					} else
-						System.out.println("\n**** Chave '" + keyRemover + "' não existe na Árvore****");
+						System.out.println("\n****Chave '" + keyRemover + "' não existe na Árvore****");
 					input.nextLine();
 					break;
 
 				case "3":
+					// Printa na tela todas as chaves, strings associadas as chaves e o Mapa Ordenado AVL
 					System.out.println("\nConjunto de  chaves atual: " + mapaAVL.keySet().toString());
 					System.out.println("Conjunto de strings atual: " + mapaAVL.values().toString());
 					System.out.println("Árvore Binária atual: " + mapaAVL.printExpression(mapaAVL.root()));

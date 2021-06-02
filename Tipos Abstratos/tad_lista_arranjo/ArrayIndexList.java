@@ -14,13 +14,12 @@ public class ArrayIndexList<E> implements IndexList<E> {
 		A = (E[]) new Object[capacity];
 	}
 	
-	public static void interface_Lista_Arranjo() {
-		ArrayIndexList<String> Arranjo = new ArrayIndexList<String>();
-		
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-		
-		while (!exit) {
+	public static void interface_Lista_Arranjo() { // Interface - Projeto Estrutura de Dados
+		ArrayIndexList<String> Arranjo = new ArrayIndexList<String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
+
+        while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 						   + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 						   + "[1] Adicionar\n"
@@ -29,15 +28,17 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						   + "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 	
-				case "1":
+				case "1": // ADICIONAR
+					// Mostra na tela o intervalo disponivel para inserção
+					System.out.print("\nDigite o indice onde deseja inserir: intervalo entre [0-" + Arranjo.size() + "] ");
 					Integer indice = null;
-	
+					
+					// Verifica se o valor do índice digitado é um Inteiro, se não for lança mensagem de erro
 					try {
-						System.out.print("\nDigite o indice onde deseja inserir: intervalo entre [0-" + Arranjo.size() + "] ");
 						indice = input.nextInt();
 					} catch (InputMismatchException e) {
 						System.out.println("\n****Indice de tipo inválido****");
@@ -45,24 +46,34 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						break;
 					} 
 					
+					// Verifica se o índice digitado está dentro do intervalo mencionado, se não estiver lança mensagem de erro
 					if (indice < 0 || indice > Arranjo.size()) {
 						System.out.println("\n****Indice fora do limite do arranjo****");
 						input.nextLine();
 						break;
 					}
 					
-					System.out.print("Digite o elemento que será armazenado no indice: ");
 					input.nextLine();
+					System.out.print("Digite o elemento que será armazenado no indice: ");
 					String valor = input.nextLine();
 
+					// Adiciona o valor no índice digitado
 					Arranjo.add(indice, valor); 
 					System.out.println("\nElemento " + valor + " adicionado no índice " + indice);
 					break;
 					
-				case "2":
-					System.out.print("\nDigite o índice que deseja remover: ");
+				case "2": // REMOVER
+					// Verifica se o Arranjo está vazio, se estiver lança mensagem de erro
+					if (Arranjo.isEmpty()) {
+						System.out.println("\n****O Arranjo está vazio****");
+						break;
+					}
+					
+					// Mostra na tela o intervalo disponivel para remoção
+					System.out.print("\nDigite o índice que deseja remover: intervalo entre [0-" + (Arranjo.size() - 1) + "] ");
 					Integer indiceRemover = null;
-	
+					
+					// Verifica se o valor do índice digitado é um Inteiro, se não for lança mensagem de erro
 					try {
 						indiceRemover = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -71,6 +82,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 						break;
 					} 
 					
+					// Verifica se o índice digitado está dentro do intervalo mencionado, se não estiver lança mensagem de erro
 					if (indiceRemover < 0 || indiceRemover >= Arranjo.size()) {
 						System.out.println("\n****Indice fora do limite do arranjo****");
 						input.nextLine();
@@ -78,12 +90,15 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					}
 					
 					input.nextLine();
-					String elemento = Arranjo.get(indiceRemover);
+					String elemento = Arranjo.get(indiceRemover); // Salva o elemento antes de ser removido para printar na mensagem
+					
+					// Remove o elemento do índice digitado
 					Arranjo.remove(indiceRemover);
 					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
 					break;
 	
-				case "3":
+				case "3": // VISUALIZAR
+					// Printa o Arranjo na tela
 					System.out.println("\nLista Arranjo Atual: " + Arranjo.toString());
 					break;
 				

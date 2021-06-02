@@ -2,9 +2,6 @@ package tad_pilha;
 
 import exceptions.EmptyStackException;
 import exceptions.FullStackException;
-import tad_dicionário.HashTableMultiMap;
-
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ArrayStack<E> implements Stack<E> {
@@ -23,12 +20,12 @@ public class ArrayStack<E> implements Stack<E> {
         S = (E[]) new Object[capacity];
     }
     
-    public static void interface_Pilha() {
-        ArrayStack<String> Pilha = new ArrayStack<String>();
-        boolean exit = false;
-        Scanner input = new Scanner(System.in);
+    public static void interface_Pilha() { // Interface - Projeto Estrutura de Dados
+        ArrayStack<String> Pilha = new ArrayStack<String>(); // Inicializa a estrutura
+        boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 
-        while (!exit) {
+        while (!exit) { // Loop de Interface
             System.out.print("\n --- Interface de Usuário ---:\n"
                     + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
                     + "[1] Adicionar na pilha\n"
@@ -37,27 +34,31 @@ public class ArrayStack<E> implements Stack<E> {
                     + "Digite a opção: ");
             String opc = input.nextLine();
             switch (opc) {
-                case "0":
+                case "0": // VOLTAR
                     exit = true;
                     break;
 
-                case "1":
+                case "1": // ADICIONAR
                     System.out.print("\nDigite o valor a ser inserido no topo: ");
                     String valorAdicionar = input.nextLine();
                     
+                    // Adiciona o elemento no topo da pilha
                     Pilha.push(valorAdicionar);
                     System.out.println("\nElemento adicionado ao topo: " + valorAdicionar);
                     break;
 
-                case "2":
+                case "2": // REMOVER
+                	// Verifica se a pilha está vazia, se estiver lança uma mensagem de erro
                 	if (Pilha.isEmpty()) {
                 		System.out.println("\n****Pilha vazia****");
                 		break;
                 	}
+                	// Remove o elemento no topo da pilha
                     System.out.println("\nO elemento '" + Pilha.pop() + "' foi removido.");
                     break;
 
-                case "3":
+                case "3": // VISUALIZAR
+                	// Printa a Pilha na tela
                     System.out.println("\nPilha atual: " + Pilha.toString());
                     break;
 

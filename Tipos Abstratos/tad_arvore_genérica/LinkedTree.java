@@ -27,12 +27,12 @@ public class LinkedTree<E> implements Tree<E> {
 		return size;
 	}
 	
-	public static void interface_Arvore_Generica() {
-		LinkedTree<String> arvoreGenerica = new LinkedTree<String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
+	public static void interface_Arvore_Generica() { // Interface - Projeto Estrutura de Dados
+		LinkedTree<String> arvoreGenerica = new LinkedTree<String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 		
-		while (!exit) {
+		while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 					+ "[1] Adicionar\n"
@@ -40,25 +40,27 @@ public class LinkedTree<E> implements Tree<E> {
 					+ "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 
-				case "1":
+				case "1": // ADICIONAR
 					System.out.print("\nDigite a String que será guardada na árvore: ");
 					String key = input.nextLine();
 					
-					if (arvoreGenerica.isEmpty()) {
+					if (arvoreGenerica.isEmpty()) { //Se for a primeira inserção cria uma raiz
 						arvoreGenerica.addRoot(key);
 						TreeNode<String> raiz = (TreeNode<String>) arvoreGenerica.root();
 						raiz.setChildren(new NodePositionList<Position<String>>());
 						System.out.println("\nRaiz adicionada: " + key);
 					} else {
+						// Pede com que o usuário digite um pai para a String
 						System.out.print("A String precisa de um nodo pai para ser adicionada, "
 									   + "digite a String de um nodo: ");
 						String paiElem = input.nextLine();
 						TreeNode<String> paiPos = null;
 						
+						// Procura a posição do pai
 						for (Position<String> w : arvoreGenerica.positions()) {
 							if (paiElem.equals(w.element())) {
 								paiPos = (TreeNode<String>) w;
@@ -66,6 +68,7 @@ public class LinkedTree<E> implements Tree<E> {
 							}
 						}
 						
+						// Se o 'for' anterior não encontrar um pai, lança mensagem de erro
 						try {
 							arvoreGenerica.checkPosition(paiPos);
 						} catch (InvalidPositionException e) {
@@ -73,17 +76,19 @@ public class LinkedTree<E> implements Tree<E> {
 							break;
 						}
 						
+						// Adiciona a String como filha do pai informado
 						arvoreGenerica.criarFilho(paiPos, key);
 						System.out.println("\nO elemento '" + key + "' foi adicionado como um filho de '" + paiElem + "'");
 					}
 					
 					break;
 					
-				case "2":
+				case "2": // VISUALIZAR
+					// Tenta mostrar a árvore na tela, se a lista estiver vazia lança mensagem de erro
 					try {
 						System.out.println("\nArvore Genérica atual: " + arvoreGenerica.parentheticRepresentation(arvoreGenerica, arvoreGenerica.root()));
 					} catch (EmptyTreeException e) {
-						System.out.println("\n****Árvore Binária vazia****");
+						System.out.println("\n****Árvore Genérica vazia****");
 						break;
 					}
 					break;

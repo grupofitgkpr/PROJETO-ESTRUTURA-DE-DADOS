@@ -29,12 +29,12 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 		addRoot(null);
 	}
 	
-	public static void interface_Mapa_ABB() {
-		BinarySearchTree<Integer, String> arvoreBinariaBusca = new BinarySearchTree<Integer, String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);
-		
-		while (!exit) {
+	public static void interface_Mapa_ABB() { // Interface - Projeto Estrutura de Dados
+		BinarySearchTree<Integer, String> arvoreBinariaBusca = new BinarySearchTree<Integer, String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
+
+        while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 					+ "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 					+ "[1] Adicionar\n"
@@ -43,13 +43,15 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 					+ "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 
-				case "1":
+				case "1": // ADICIONAR
 					System.out.print("\nDigite o valor da chave que será adicionada (Valor inteiro): ");
 					Integer key = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -62,13 +64,16 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 					System.out.print("Digite a String que será armazenada na chave: ");
 					String value = input.nextLine();
 					
+					// Adiciona o par de chave e valor na Árvore Binária de Busca
 					arvoreBinariaBusca.put(key, value);
 					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
 					break;
 
-				case "2":
+				case "2": // REMOVER
 					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer keyRemover = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						keyRemover = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -77,13 +82,15 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 						break;
 					}
 					
+					// Verifica se a chave existe na Árvore Binária de Busca
 					boolean verifica = false;
 					for (int keyVerifica : arvoreBinariaBusca.keySet())
 						if (keyVerifica == keyRemover) {
 							verifica = true;
 							break;
 						}
-							
+					
+					// Se existir remove da Árvore Binária de Busca e se não existe, lança mensagem de erro
 					if (verifica) {
 						arvoreBinariaBusca.remove(keyRemover);
 						System.out.println("\nO elemento '" + keyRemover + "' foi removido da Árvore");
@@ -92,7 +99,8 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 					input.nextLine();
 					break;
 
-				case "3":
+				case "3": // VISUALIZAR
+					// Printa na tela todas as chaves, strings associadas as chaves e a Árvore Binária de Busca na tela
 					System.out.println("\nConjunto de  chaves atual: " + arvoreBinariaBusca.keySet().toString());
 					System.out.println("Conjunto de strings atual: " + arvoreBinariaBusca.values().toString());
 					System.out.println("Arvore Binária atual: " + arvoreBinariaBusca.printExpression(arvoreBinariaBusca.root()));

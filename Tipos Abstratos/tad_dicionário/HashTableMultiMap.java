@@ -24,12 +24,12 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 	// Retorna se o dicionário está vazio
 	public boolean isEmpty() { return nSize == 0; }
 	
-	public static void interface_Dicionario() {
-		HashTableMultiMap<Integer, String> Dicionario = new HashTableMultiMap<Integer, String>();
-		boolean exit = false;
-		Scanner input = new Scanner(System.in);;
+	public static void interface_Dicionario() { // Interface - Projeto Estrutura de Dados
+		HashTableMultiMap<Integer, String> Dicionario = new HashTableMultiMap<Integer, String>(); // Inicializa a estrutura
+		boolean exit = false; // Flags
+		Scanner input = new Scanner(System.in); // Inicializa Scanner
 		
-		while (!exit) {
+		while (!exit) { // Loop de Interface
 			System.out.print("\n --- Interface de Usuário ---:\n"
 						   + "[0] Voltar para o Menu (Estrutura atual será limpa)\n"
 						   + "[1] Adicionar\n"
@@ -38,13 +38,15 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 						   + "Digite a opção: ");
 			String opc = input.nextLine();
 			switch(opc) {
-				case "0":
+				case "0": // VOLTAR
 					exit = true;
 					break;
 	
-				case "1":
+				case "1": // ADICIONAR
 					System.out.print("\nDigite o valor da chave (Valor inteiro): ");
 					Integer key = null;
+					
+					// Verifica se o valor da chave digitada é um Inteiro, se não for lança mensagem de erro
 					try {
 						key = input.nextInt();
 					} catch (InputMismatchException e) {
@@ -54,16 +56,21 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					}
 						
 					input.nextLine();
-					System.out.print("Digite a String que será armazenada na chave: ");
+					System.out.print("Digite a String que será armazenada na chave: "); 
 					String value = input.nextLine();
 					
+					// Adiciona no Dicionário o par de Key e Value
 					String valorAdd = Dicionario.put(key, value).toString();
 					System.out.println("\nElemento adicionado: " + valorAdd);
 					break;
 				
-				case "2":
+				case "2": // REMOVER
 					System.out.print("\nDigite o valor da chave que será removida (Valor inteiro): ");
 					Integer rkey = null;
+					
+					// Verifica se a chave digitada é um Inteiro 	E	 se ela está ou não no Dicionário
+					// Se um desses falhar, lança a sua respectiva mensagem de erro
+					// Caso tudo esteja correto, remove a chave do Dicionário
 					try {
 						rkey = input.nextInt();
 						String rvalor = Dicionario.remove(Dicionario.get(rkey)).toString();
@@ -80,7 +87,8 @@ public class HashTableMultiMap<K, V> implements MultiMap<K, V> {
 					input.nextLine();
 					break;
 				
-				case "3":
+				case "3": // VISUALIZAR
+					// Printa o dicionário na tela
 					System.out.println("\nDicionário atual: " + Dicionario.entrySet().toString());
 					break;
 				
