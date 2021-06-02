@@ -46,7 +46,7 @@ public class NodeQueue<E> implements Queue<E> {
                 		break;
                 	}
                 	// Remove o elemento na frente da fila
-                    System.out.println("\nO elemento " + Fila.dequeue() + " foi removido.");
+                    System.out.println("\nO elemento '" + Fila.dequeue() + "' foi removido.");
                     break;
 
                 case "3": // VISUALIZAR

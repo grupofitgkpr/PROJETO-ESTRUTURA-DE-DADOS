@@ -66,7 +66,7 @@ public class BinarySearchTree<K, V> extends LinkedBinaryTree<Entry<K, V>> implem
 					
 					// Adiciona o par de chave e valor na Árvore Binária de Busca
 					arvoreBinariaBusca.put(key, value);
-					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
+					System.out.println("\nChave " + key + " com valor '" + value + "' foi adicionada.");
 					break;
 
 				case "2": // REMOVER

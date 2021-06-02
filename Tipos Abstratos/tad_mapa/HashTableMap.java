@@ -99,10 +99,17 @@ public class HashTableMap<K, V> implements Map<K, V> {
 						break;
 					} 
 					
-					// Verifica se a chave existe na lista, se não encontrar lança mensagem de erro
-					String verifica = Mapa.remove(Mapa.findEntry(removeKey));
-					if (verifica != null)
-						System.out.println("\nElemento removido: " + removeKey + "=" + verifica);
+					// Percorre o Mapa para verificar se a chave existe no Mapa
+					boolean verifica = false;
+					for (Entry<Integer, String> procuraKey : Mapa.entrySet())
+						if (procuraKey.getKey() == removeKey) {
+							verifica = true;
+							break;
+						}
+					
+					// Se a chave existe no Mapa, ela é removida; se não, lança mensagem de erro
+					if (verifica)
+						System.out.println("\nElemento removido: " + removeKey + "=" + Mapa.remove(removeKey));
 					else
 						System.out.println("\n****A chave '" + removeKey + "' não existe no Mapa****");
 					input.nextLine();

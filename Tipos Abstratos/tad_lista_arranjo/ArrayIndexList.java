@@ -94,7 +94,7 @@ public class ArrayIndexList<E> implements IndexList<E> {
 					
 					// Remove o elemento do índice digitado
 					Arranjo.remove(indiceRemover);
-					System.out.println("\nO indice " + indiceRemover + " de valor " + elemento + " foi removido.");
+					System.out.println("\nO indice " + indiceRemover + " de valor '" + elemento + "' foi removido.");
 					break;
 	
 				case "3": // VISUALIZAR

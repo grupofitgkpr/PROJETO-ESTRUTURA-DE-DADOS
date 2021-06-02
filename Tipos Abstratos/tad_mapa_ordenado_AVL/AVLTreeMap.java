@@ -54,7 +54,7 @@ public class AVLTreeMap<K, V> extends BinarySearchTree<K, V> implements Map<K, V
 					
 					// Adiciona o par de chave e valor no Mapa Ordenado AVL
 					mapaAVL.put(key, value);
-					System.out.println("\nChave " + key + " com valor " + value + " foi adicionada.");
+					System.out.println("\nChave " + key + " com valor '" + value + "' foi adicionada.");
 					break;
 
 				case "2": // REMOVER
