@@ -155,7 +155,7 @@ public class EstruturasDeDadosAppV1 {
                     
                 case "00":
                     System.out.println("\n--- Integrantes ---:");
-                    System.out.println("Integrantes:			  	  RA: \n"
+                    System.out.println("					 RA: \n"
                     		+ "* Giovanni Assis Lopes			|  1903604\n"
                     		+ "* Kaique Mantoanelli Silva		|  1903168\n"
                     		+ "* Pedro Henrique Oliveira Dantas Lopes	|  1904007\n"
